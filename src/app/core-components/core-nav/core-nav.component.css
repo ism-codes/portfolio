@@ -1,0 +1,39 @@
+.sidenav-container {
+  height: 100%;
+
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav{
+  background: inherit;
+}
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  height: 5rem;
+  z-index: 1;
+  background: rgb(177, 142, 142);
+}
+.options {
+  vertical-align:middle;
+}
+
+.project-buttons a{
+  display: inline-block;
+  font-size: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.project-buttons{
+  margin-left: 35%;
+}
+.mat-sidenav-content{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
+}
