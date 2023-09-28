@@ -11,29 +11,38 @@
   background: inherit;
 }
 
-.mat-toolbar {
-  position: sticky;
-  top: 0;
-  height: 5rem;
-  z-index: 1;
-  background: rgb(177, 142, 142);
-}
-.options {
-  vertical-align:middle;
+mat-sidenav-content mat-toolbar {
+  display: flex;
+  padding: 0;
+  
 }
 
-.project-buttons a{
-  display: inline-block;
-  font-size: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+mat-sidenav-content mat-toolbar button{
+  display: flex;
+  float: right;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 0;
+  margin: 0;
 }
-.project-buttons{
-  margin-left: 35%;
+
+mat-sidenav-content mat-toolbar a {
+  display: flex;
+  border-radius: 0;
+  align-items: center;
+  background-color: #04AA6D;
+  color: white;
+  align-self:stretch;
 }
+
 .mat-sidenav-content{
   position: sticky;
   top: 0;
   z-index: 1;
   background: white;
+}
+
+.example-spacer{
+  flex: 1 1 auto;
 }
