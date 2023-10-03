@@ -11,13 +11,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-
+import { CardsComponent } from './cards/cards.component';
+import {MatCardModule} from '@angular/material/card';
+import { CurrentprojectsComponent } from './currentprojects/currentprojects.component';
+import { FutureprojectsComponent } from './futureprojects/futureprojects.component';
+import { MainsectionComponent } from './mainsection/mainsection.component';
+import { PreviousprojectsComponent } from './previousprojects/previousprojects.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CoreNavComponent
+    CoreNavComponent,
+    CardsComponent,
+    CurrentprojectsComponent,
+    FutureprojectsComponent,
+    MainsectionComponent,
+    PreviousprojectsComponent
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

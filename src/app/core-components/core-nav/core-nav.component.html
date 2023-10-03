@@ -1,13 +1,11 @@
+<h1>Ismael Khan Portfolio</h1>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer class="sidenav hide-on-small-screens" 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === true">
+      [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item *ngFor="let button of buttons" routerLink={{button.pagename}}>{{button.name}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,13 +18,25 @@
         >
         <mat-icon >menu</mat-icon>
       </button>
-      <span class="example-spacer"></span>
+      <button
+        type="button"
+        aria-label="Home Page"
+        mat-icon-button
+        routerLink=""
+        class="mobile-hide"
+        >
+        <mat-icon >home</mat-icon>
+      </button>
       
-      <a mat-button href="">Previous Projects</a>
-      <a mat-button href="">Current Projects</a>
-      <a mat-button href="">Future Projects</a>
+      
+      <a mat-button *ngFor="let button of buttons" routerLink={{button.pagename}} class = "non-active "routerLinkActive="active-link">{{button.name}}</a>
+      
       <span class="example-spacer"></span>
     </mat-toolbar>
+    <div class="main-content">
+    <router-outlet></router-outlet>
+    
+    </div>
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>
