@@ -1,4 +1,4 @@
-export interface CardLayout {
+export interface PreviousCardLayout {
     CardID: number;
     title: string;
     description: string;

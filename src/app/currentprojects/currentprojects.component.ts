@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CARDS } from './current-cards';
 @Component({
   selector: 'app-currentprojects',
   templateUrl: './currentprojects.component.html',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CurrentprojectsComponent implements OnInit {
 
   constructor() { }
-
+  currentcards = CARDS
   ngOnInit(): void {
   }
 
