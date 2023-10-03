@@ -16,6 +16,10 @@ h1 {
   #viewDiv{
     width: 80%;
   }
+  #mapDiv{
+    width: 100%;
+    height: 500px;
+  }
   .esri-search {
     display: inline-block;
     width: 25rem;
