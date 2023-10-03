@@ -72,3 +72,23 @@ mat-sidenav-content mat-toolbar .active-link {
 .example-spacer{
   flex: 1 1 auto;
 }
+@media (max-width: 600px) {
+  mat-sidenav-content mat-toolbar .mobilehide{
+    display: none;
+    width: 0px;
+  }
+  mat-sidenav-content mat-toolbar .non-active {
+    min-width: 60px;
+    display: flex;
+    white-space:normal;
+    border-radius: 0;
+    align-items: center;
+    line-height: 1rem;
+    background-color: #04AA6D;
+    color: white;
+    align-self:stretch;
+  }
+  mat-sidenav-content mat-toolbar .active-link {
+    background-color: #06b977;
+  }
+}

@@ -16,20 +16,21 @@
         mat-icon-button
         (click)="drawer.toggle()"
         >
-        <mat-icon >menu</mat-icon>
+        <mat-icon>menu</mat-icon>
       </button>
+      <div class="mobilehide">
       <button
         type="button"
         aria-label="Home Page"
         mat-icon-button
         routerLink=""
-        class="mobile-hide"
+        class="hidden-size"
         >
         <mat-icon >home</mat-icon>
       </button>
+    </div>
       
-      
-      <a mat-button *ngFor="let button of buttons" routerLink={{button.pagename}} class = "non-active "routerLinkActive="active-link">{{button.name}}</a>
+      <a mat-button *ngFor="let button of buttons" routerLink={{button.pagename}} class = "non-active hidden-xs"routerLinkActive="active-link">{{button.name}}</a>
       
       <span class="example-spacer"></span>
     </mat-toolbar>
