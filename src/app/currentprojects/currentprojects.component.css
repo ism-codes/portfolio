@@ -4,6 +4,8 @@
     max-width: 300px;
     margin: 1rem;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
   }
   .cards {
     display: flex;
@@ -15,6 +17,5 @@
     box-shadow: 0 4px 4px 4px rgba(0,0,0,.2)
   }
   .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }

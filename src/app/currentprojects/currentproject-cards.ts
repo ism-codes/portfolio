@@ -3,4 +3,5 @@ export interface CardLayout {
     title: string;
     description: string;
     content: string;
+    image: string
 }

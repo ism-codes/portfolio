@@ -1,8 +1,18 @@
 import { CardLayout } from "./currentproject-cards";
 
 export const CARDS: CardLayout[] = [
-    {CardID: 1, title: 'Current Project 1', description: 'This project does things', content: 'Hello this is my new project'},
-    {CardID: 2, title: 'Current Project 2', description: 'This project does things', content: 'Hello this is my new project'},
-    {CardID: 3, title: 'Current Project 3', description: 'This project does things', content: 'Hello this is my new project'},
-    {CardID: 3, title: 'Current Project 4', description: 'This project does things', content: 'Hello this is my new project'},
+    {
+        CardID: 1, 
+        title: 'ArcGIS Angular Implementation', 
+        description: 'This project implements ArcGIS Search Feature into Angular', 
+        content: 'This is one of my main projects to practice implementing ArcGIS JavaScript SDK into my future angular projects',
+        image: "assets/coding.png",
+    },
+    {
+        CardID: 2, 
+        title: 'Project 2', 
+        description: '', 
+        content: 'This is one of my main projects to practice implementing ArcGIS JavaScript SDK into my future angular projects',
+        image: "",
+    },
 ]
