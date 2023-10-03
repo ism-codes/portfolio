@@ -1,6 +1,6 @@
 <h3>Current Projects</h3>
 <div class = "cards">
-    <mat-card class="example-card" *ngFor="let card of currentcards" routerLink="help">
+    <mat-card class="example-card" *ngFor="let card of currentcards" routerLink="ArcGIS">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{card.title}}</mat-card-title>
@@ -13,4 +13,5 @@
           </p>
         </mat-card-content>
       </mat-card>
-    </div> 
+    </div>
+    <router-outlet name="arc"></router-outlet>

@@ -30,7 +30,7 @@
       </button>
     </div>
       
-      <a mat-button *ngFor="let button of buttons" routerLink={{button.pagename}} class = "non-active hidden-xs"routerLinkActive="active-link" >{{button.name}}</a>
+      <a mat-button *ngFor="let button of buttons | slice:1" routerLink={{button.pagename}} class = "non-active hidden-xs"routerLinkActive="active-link" >{{button.name}}</a>
       
       <span class="example-spacer"></span>
     </mat-toolbar>

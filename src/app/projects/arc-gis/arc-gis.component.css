@@ -1,0 +1,43 @@
+h1 {
+    margin: 0;
+  }
+  .esri-view {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+  #mapViewNode {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+  #viewDiv{
+    width: 80%;
+  }
+  .esri-search {
+    display: inline-block;
+    width: 25rem;
+    padding: 10px;
+  }
+  .esri-search__form {
+    display: inline-block;
+    padding: 10px;
+  }
+  
+  #results{
+    font-size: 1.2rem;
+    text-transform: capitalize;
+  }
+  .resultbox{
+    margin: 1rem 0 1rem 0;
+  }
+  .result{
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .resultsform{
+    padding: 1rem;
+  }

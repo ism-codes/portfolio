@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ArcGISComponent } from '../projects/arc-gis/arc-gis.component';
 @Component({
   selector: 'app-mainsection',
   templateUrl: './mainsection.component.html',

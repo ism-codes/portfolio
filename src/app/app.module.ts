@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,9 @@ import { CurrentprojectsComponent } from './currentprojects/currentprojects.comp
 import { FutureprojectsComponent } from './futureprojects/futureprojects.component';
 import { MainsectionComponent } from './mainsection/mainsection.component';
 import { PreviousprojectsComponent } from './previousprojects/previousprojects.component';
+import { ArcGISComponent } from './projects/arc-gis/arc-gis.component';
+import { PlaceFind } from './projects/arc-gis/placefind/placefind.service';
+import { PlacefindComponent } from './projects/arc-gis/placefind/placefind.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +29,11 @@ import { PreviousprojectsComponent } from './previousprojects/previousprojects.c
     CurrentprojectsComponent,
     FutureprojectsComponent,
     MainsectionComponent,
-    PreviousprojectsComponent
+    PreviousprojectsComponent,
+    PlacefindComponent,
+    ArcGISComponent
   ],
   imports: [
-   
     MatTableModule,
     MatCardModule,
     BrowserModule,
@@ -39,7 +44,8 @@ import { PreviousprojectsComponent } from './previousprojects/previousprojects.c
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
