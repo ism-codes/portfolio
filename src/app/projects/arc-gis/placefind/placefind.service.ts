@@ -16,6 +16,7 @@ getConfig(val: string) {
   return this.http.get(this.placeURL+val);
 }
 getCoord(val: string) {
+  console.log(this.http.get(this.coordURL+val))
     return this.http.get(this.coordURL+val);
 }
 

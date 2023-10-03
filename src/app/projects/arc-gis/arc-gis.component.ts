@@ -17,7 +17,7 @@ import * as route from "@arcgis/core/rest/route.js"
 import RouteParameters from '@arcgis/core/rest/support/RouteParameters.js'
 import FeatureSet from '@arcgis/core/rest/support/FeatureSet.js'
 import Graphic from '@arcgis/core/Graphic.js'
-
+import { round } from 'cypress/types/lodash';
 @Component({
   selector: 'app-arc-gis',
   templateUrl: './arc-gis.component.html',
@@ -42,7 +42,7 @@ export class ArcGISComponent implements OnInit {
 
     search.on("search-complete",  (event) =>{ 
       document.getElementById("results")!.innerHTML = "";
-      // console.log('event', event);
+      console.log('event', event);
       var html = "";
       event!.results[0].results.forEach(function (result) {
         html = html +''+ event.searchTerm
@@ -51,6 +51,7 @@ export class ArcGISComponent implements OnInit {
       document.getElementById("results")!.innerHTML = html;
       this.appCall=this.appService.getConfig(html);
       this.coordCall=this.appService.getCoord(html);
+      console.log(this.coordCall)
     });
     
 
@@ -62,7 +63,7 @@ export class ArcGISComponent implements OnInit {
 
     const view = new MapView({
       map: map,
-      center: [-118.24532,34.05398], // Longitude, latitude
+      center: [-117.182270,34.055810], // Longitude, latitude
       zoom: 12, // Zoom level
       container: "mapDiv", // Div element
     });
@@ -134,7 +135,11 @@ export class ArcGISComponent implements OnInit {
           view.ui.add(directions, "top-right");
           var drivingTime$ = data.routeResults[0].directions.totalDriveTime
           var drivingDist$ = data.routeResults[0].directions.totalLength
-          console.log(drivingTime$,drivingDist$)
+          drivingTime$ = (drivingTime$).toFixed(0)
+          drivingDist$ = (drivingDist$).toFixed(1)
+          document.getElementById("DTresult")!.innerHTML = (drivingTime$+' minutes')
+          document.getElementById("DDresult")!.innerHTML = (drivingDist$+' miles')
+          console.log('\nDriving Time: ',drivingTime$,'\nDriving Distantce: ',drivingDist$)
           return drivingTime$;
         }
         
