@@ -17,7 +17,7 @@ import * as route from "@arcgis/core/rest/route.js"
 import RouteParameters from '@arcgis/core/rest/support/RouteParameters.js'
 import FeatureSet from '@arcgis/core/rest/support/FeatureSet.js'
 import Graphic from '@arcgis/core/Graphic.js'
-import { round } from 'cypress/types/lodash';
+import { over, round } from 'cypress/types/lodash';
 @Component({
   selector: 'app-arc-gis',
   templateUrl: './arc-gis.component.html',
@@ -32,7 +32,6 @@ export class ArcGISComponent implements OnInit {
   constructor(public appService: PlaceFind) {}
   datas!: number;
   ngOnInit() {
-    
 
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -58,7 +57,7 @@ export class ArcGISComponent implements OnInit {
 
     esriConfig.apiKey="AAPK5c928794591042709bc8fbfe5277f506L61TaOqI9tSpQ14zCyIoUivahGVw1OMcUR_gRPn38GmmQjsm8FqS9y0ak5mmdNjh";
     const map = new Map({
-    basemap: "arcgis-navigation"
+    basemap: "arcgis-navigation-night"
   });
 
     const view = new MapView({
@@ -74,6 +73,7 @@ export class ArcGISComponent implements OnInit {
       } else if (view.graphics.length === 1) {
         addGraphic("destination", event.mapPoint);
         getRoute();
+        
       } else {
         view.graphics.removeAll();
         addGraphic("origin",event.mapPoint);
@@ -104,7 +104,9 @@ export class ArcGISComponent implements OnInit {
         stops: new FeatureSet({
           features: view.graphics.toArray()
         }),
+        
         returnDirections: true
+        
       });
     route.solve(routeUrl, routeParams)
       .then(function(data: any) {

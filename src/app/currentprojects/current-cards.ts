@@ -8,11 +8,5 @@ export const CARDS: CardLayout[] = [
         content: 'This is one of my main projects to practice implementing ArcGIS JavaScript SDK into my future angular projects',
         image: "assets/coding.png",
     },
-    {
-        CardID: 2, 
-        title: 'Project 2', 
-        description: '', 
-        content: 'This is one of my main projects to practice implementing ArcGIS JavaScript SDK into my future angular projects',
-        image: "",
-    },
+    
 ]
