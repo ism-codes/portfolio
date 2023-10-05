@@ -139,8 +139,8 @@ export class ArcGISComponent implements OnInit {
           var drivingDist$ = data.routeResults[0].directions.totalLength
           drivingTime$ = (drivingTime$).toFixed(0)
           drivingDist$ = (drivingDist$).toFixed(1)
-          document.getElementById("DTresult")!.innerHTML = (drivingTime$+' minutes')
-          document.getElementById("DDresult")!.innerHTML = (drivingDist$+' miles')
+          document.getElementById("DriveTimeResult")!.innerHTML = (drivingTime$+' minutes')
+          document.getElementById("DriveDistanceResult")!.innerHTML = (drivingDist$+' miles')
           console.log('\nDriving Time: ',drivingTime$,'\nDriving Distantce: ',drivingDist$)
           return drivingTime$;
         }
