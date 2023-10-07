@@ -21,6 +21,8 @@ import { over, round } from 'cypress/types/lodash';
 import {Observable, Observer} from 'rxjs';
 import {MatTabsModule} from '@angular/material/tabs';
 import Feature from "@arcgis/core/widgets/Feature.js";
+
+import Point from "@arcgis/core/geometry/Point.js";
 export interface TabTest{
   label: string;
   content: Component;
@@ -69,33 +71,57 @@ export class ArcGISComponent implements OnInit {
       basemap: "arcgis-navigation-night"
     });
     
-
+    const view2 = new MapView({
+      map: map2,
+      zoom: 10, // Zoom level
+      container: "mapDivRoute", // Div element
+    });
     search2.on(("search-complete"),  (event) =>{ 
       console.log(event.results[0].results[0].extent.xmax);
       console.log(event.results[0].results[0].extent.ymax);
       console.log(event);
-      const view2 = new MapView({
-        map: map2,
-        center: [event.results[0].results[0].extent.xmax,event.results[0].results[0].extent.ymax], // Longitude, latitude
-        zoom: 12, // Zoom level
-        container: "mapDivRoute", // Div element
+      var startCoordLong = event.results[0].results[0].extent.xmax
+      var startCoordLat = event.results[0].results[0].extent.ymax
+      let point = {
+        type: "point",  // autocasts as new Point()
+        longitude: startCoordLong,
+        latitude: startCoordLat
+      };
+      let pt = new Point({
+        x: startCoordLong,
+        y: startCoordLat,
       });
+      view2.center = pt;
+      view2.zoom= 10;
+      addGraphic("departure", point,view2)
     });
     search3.on(("search-complete"),  (event) =>{ 
       console.log(event.results[0].results[0].extent.xmax);
       console.log(event.results[0].results[0].extent.ymax);
       console.log(event);
+      
       var endCoordLong = event.results[0].results[0].extent.xmax
       var endCoordLat = event.results[0].results[0].extent.ymax
-      const view2 = new MapView({
-        map: map2,
-        center: [endCoordLong,endCoordLat], // Longitude, latitude
-        zoom: 12, // Zoom level
-        container: "mapDivRoute", // Div element
+      
+      let point = {
+        type: "point",  // autocasts as new Point()
+        longitude: endCoordLong,
+        latitude: endCoordLat
+      };
+      let point2 = {  // autocasts as new Point()
+        longitude: endCoordLong,
+        latitude: endCoordLat
+      };
+      let pt = new Point({
+        x: endCoordLong,
+        y: endCoordLat,
       });
+      view2.center = pt;
+      view2.zoom= 10;
+      addGraphic("destination", point,view2)
     });
 
-
+    const po = new Point()
 
     search.on(("search-complete"),  (event) =>{ 
       document.getElementById("results")!.innerHTML = "";
@@ -103,6 +129,7 @@ export class ArcGISComponent implements OnInit {
       console.log(event.results[0].results[0].extent.ymax);
       console.log(event);
       var html = event.searchTerm;
+
       
       
       document.getElementById("results")!.innerHTML = html;
@@ -134,14 +161,14 @@ export class ArcGISComponent implements OnInit {
     const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
     view.on("click", function(event){
       if (view.graphics.length === 0) {
-        addGraphic("origin", event.mapPoint);
+        addGraphic("origin", event.mapPoint,view);
       } else if (view.graphics.length === 1) {
-        addGraphic("destination", event.mapPoint);
+        addGraphic("destination", event.mapPoint,view);
         getRoute();
         
       } else {
         view.graphics.removeAll();
-        addGraphic("origin",event.mapPoint);
+        addGraphic("origin",event.mapPoint,view);
       }
     });
     const simpleMarkerSymbol = {
@@ -157,12 +184,12 @@ export class ArcGISComponent implements OnInit {
               color: [5, 150, 255],
               width: 3
     };
-    function addGraphic(type: any, point: any) {
+    function addGraphic(type: any, point: any ,selectedview: any) {
       const graphic = new Graphic({
         symbol: simpleMarkerSymbol,
         geometry: point
       });
-      view.graphics.add(graphic);
+      selectedview.graphics.add(graphic);
     }
     function getRoute()  {
       const routeParams = new RouteParameters({
