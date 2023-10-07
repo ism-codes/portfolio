@@ -73,7 +73,8 @@ export class ArcGISComponent implements OnInit {
     
     const view2 = new MapView({
       map: map2,
-      zoom: 10, // Zoom level
+      center:[ 0,0],
+      zoom: 1, // Zoom level
       container: "mapDivRoute", // Div element
     });
     search2.on(("search-complete"),  (event) =>{ 
@@ -119,6 +120,7 @@ export class ArcGISComponent implements OnInit {
       view2.center = pt;
       view2.zoom= 10;
       addGraphic("destination", point,view2)
+      getRoute(view2)
     });
 
     const po = new Point()
@@ -129,7 +131,7 @@ export class ArcGISComponent implements OnInit {
       console.log(event.results[0].results[0].extent.ymax);
       console.log(event);
       var html = event.searchTerm;
-
+      
       
       
       document.getElementById("results")!.innerHTML = html;
@@ -164,7 +166,7 @@ export class ArcGISComponent implements OnInit {
         addGraphic("origin", event.mapPoint,view);
       } else if (view.graphics.length === 1) {
         addGraphic("destination", event.mapPoint,view);
-        getRoute();
+        getRoute(view);
         
       } else {
         view.graphics.removeAll();
@@ -191,10 +193,10 @@ export class ArcGISComponent implements OnInit {
       });
       selectedview.graphics.add(graphic);
     }
-    function getRoute()  {
+    function getRoute(viewoption:any)  {
       const routeParams = new RouteParameters({
         stops: new FeatureSet({
-          features: view.graphics.toArray()
+          features: viewoption.graphics.toArray()
         }),
         startTime: 	1696554486,
         findBestSequence:true,
@@ -209,7 +211,7 @@ export class ArcGISComponent implements OnInit {
             color: [5, 150, 255],
             width: 3
             };
-          view.graphics.add(result.route);
+            viewoption.graphics.add(result.route);
         });
         if (data.routeResults.length > 0) {
           const directions = document.createElement("ol");
@@ -226,8 +228,8 @@ export class ArcGISComponent implements OnInit {
             directions.appendChild(direction);
             
           });
-          view.ui.empty("top-right");
-          view.ui.add(directions, "top-right");
+          viewoption.ui.empty("top-right");
+          viewoption.ui.add(directions, "top-right");
           var drivingTime$ = data.routeResults[0].directions.totalDriveTime
           var drivingDist$ = data.routeResults[0].directions.totalLength
           drivingTime$ = (drivingTime$).toFixed(0)
