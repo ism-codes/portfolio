@@ -21,6 +21,9 @@ import { PreviousprojectsComponent } from './previousprojects/previousprojects.c
 import { ArcGISComponent } from './projects/arc-gis/arc-gis.component';
 import { PlaceFind } from './projects/arc-gis/placefind/placefind.service';
 import { PlacefindComponent } from './projects/arc-gis/placefind/placefind.component';
+import { TabGroupsComponent } from './projects/arc-gis/tab-groups/tab-groups.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +34,12 @@ import { PlacefindComponent } from './projects/arc-gis/placefind/placefind.compo
     MainsectionComponent,
     PreviousprojectsComponent,
     PlacefindComponent,
-    ArcGISComponent
+    ArcGISComponent,
+    TabGroupsComponent
   ],
   imports: [
+    MatExpansionModule,
+    MatTabsModule,
     MatTableModule,
     MatCardModule,
     BrowserModule,

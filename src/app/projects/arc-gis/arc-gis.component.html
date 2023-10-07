@@ -1,29 +1,85 @@
+
 <div class="ArcStyleComponent">
     <h3>ArcGIS Angular Implementation Project</h3>
-    <div id="viewDiv">
-        <div class="SearchContainer">
-            <h4>Auto Fill Location Demo</h4>
-            <div id="searchDiv"></div>
-            <div class="SearchResult">
-                <div>Address Output:</div>
-                <div id="results"></div>
+  <mat-accordion multi class='PanelContainer'>
+    <mat-expansion-panel class="Panels" (opened) = true>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <!-- Title for panel -->
+            Auto Fill Location Demo
+        </mat-panel-title>
+        <mat-panel-description>
+            <!-- Description for panel -->
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Content for panel -->
+        <div id="viewDiv">
+            <div class="SearchContainer">
+                <h4>Auto Fill Location Demo</h4>
+                <div id="searchDiv"></div>
+                <div class="SearchResult">
+                    <div>Address Output:</div>
+                    <div id="results"></div>
+                </div>
             </div>
         </div>
-        <div class="DirectionContainer">
-            <h4>Point Drop Routing Demo</h4>
-            <div id="mapDiv"></div>
-            <div class="DirectionOutput">
-                <div class="DirectionResult">
-                    Drive Time:
-                    <div id="DriveTimeResult"></div>
-                </div>
-                    
-                <div class="DirectionResult">
-                    Drive Distance:
-                    <div id="DriveDistanceResult"></div>
-                </div>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel class="Panels">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <!-- Title for panel -->
+            Point Drop Routing Demo
+        </mat-panel-title>
+        <mat-panel-description>
+          <!-- Description for panel -->
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Content for panel -->
+      <div class="DirectionContainer">
+        <h4>Point Drop Routing Demo</h4>
+        <div id="mapDiv"></div>
+        <div class="DirectionOutput">
+            <div class="DirectionResult">
+                <div id="ol"></div>
+                Drive Time:
+                <div id="DriveTimeResult"></div>
+            </div>
+                
+            <div class="DirectionResult">
+                Drive Distance:
+                <div id="DriveDistanceResult"></div>
             </div>
         </div>
     </div>
-</div>
+    
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="Panels" (opened) = true>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <!-- Title for panel -->
+            Location Demo
+        </mat-panel-title>
+        <mat-panel-description>
+            <!-- Description for panel -->
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Content for panel -->
+        <div id="viewDiv">
+            <div class="SearchContainer">
+                <h4>Search Routing</h4>
+                <div class="searchField">
+                    Start Location:
+                    <div id="searchDiv2"></div>
+                </div>
+                <div class="searchField">
+                    End Location:
+                    <div id="searchDiv3"></div>
+                </div>
+                <div id="mapDivRoute"></div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 

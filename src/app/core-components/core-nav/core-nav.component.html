@@ -1,4 +1,7 @@
-<h1>Ismael Khan Portfolio</h1>
+
+<div class="SiteName">
+  <h1>Ismael Khan Portfolio</h1>
+</div>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav hide-on-small-screens" 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -37,7 +40,6 @@
   
     <div class="main-content">
     <router-outlet></router-outlet>
-    
     </div>
     <!-- Add Content Here -->
   </mat-sidenav-content>

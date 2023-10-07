@@ -18,11 +18,20 @@ import RouteParameters from '@arcgis/core/rest/support/RouteParameters.js'
 import FeatureSet from '@arcgis/core/rest/support/FeatureSet.js'
 import Graphic from '@arcgis/core/Graphic.js'
 import { over, round } from 'cypress/types/lodash';
+import {Observable, Observer} from 'rxjs';
+import {MatTabsModule} from '@angular/material/tabs';
+import Feature from "@arcgis/core/widgets/Feature.js";
+export interface TabTest{
+  label: string;
+  content: Component;
+}
+
 @Component({
   selector: 'app-arc-gis',
   templateUrl: './arc-gis.component.html',
   styleUrls: ['./arc-gis.component.css']
 })
+
 export class ArcGISComponent implements OnInit {
   placeurl = "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?"
   appCall: any;
@@ -36,16 +45,65 @@ export class ArcGISComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     const search = new Search({
-      container: "searchDiv"
+      autoSelect: true,
+      
+      container: "searchDiv",
+      locationEnabled:true
     });
 
-    search.on("search-complete",  (event) =>{ 
-      document.getElementById("results")!.innerHTML = "";
-      console.log('event', event);
-      var html = "";
-      event!.results[0].results.forEach(function (result) {
-        html = html +''+ event.searchTerm
+
+
+    const search2 = new Search({
+      autoSelect: true,
+      
+      container: "searchDiv2",
+      locationEnabled:true
+    });
+    const search3 = new Search({
+      autoSelect: true,
+      
+      container: "searchDiv3",
+      locationEnabled:true
+    });
+    const map2 = new Map({
+      basemap: "arcgis-navigation-night"
+    });
+    
+
+    search2.on(("search-complete"),  (event) =>{ 
+      console.log(event.results[0].results[0].extent.xmax);
+      console.log(event.results[0].results[0].extent.ymax);
+      console.log(event);
+      const view2 = new MapView({
+        map: map2,
+        center: [event.results[0].results[0].extent.xmax,event.results[0].results[0].extent.ymax], // Longitude, latitude
+        zoom: 12, // Zoom level
+        container: "mapDivRoute", // Div element
       });
+    });
+    search3.on(("search-complete"),  (event) =>{ 
+      console.log(event.results[0].results[0].extent.xmax);
+      console.log(event.results[0].results[0].extent.ymax);
+      console.log(event);
+      var endCoordLong = event.results[0].results[0].extent.xmax
+      var endCoordLat = event.results[0].results[0].extent.ymax
+      const view2 = new MapView({
+        map: map2,
+        center: [endCoordLong,endCoordLat], // Longitude, latitude
+        zoom: 12, // Zoom level
+        container: "mapDivRoute", // Div element
+      });
+    });
+
+
+
+    search.on(("search-complete"),  (event) =>{ 
+      document.getElementById("results")!.innerHTML = "";
+      console.log(event.results[0].results[0].extent.xmax);
+      console.log(event.results[0].results[0].extent.ymax);
+      console.log(event);
+      var html = event.searchTerm;
+      
       
       document.getElementById("results")!.innerHTML = html;
       this.appCall=this.appService.getConfig(html);
@@ -66,6 +124,13 @@ export class ArcGISComponent implements OnInit {
       zoom: 12, // Zoom level
       container: "mapDiv", // Div element
     });
+
+
+    const feat = new Feature({
+      container: "feature"
+
+    })
+    
     const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
     view.on("click", function(event){
       if (view.graphics.length === 0) {
@@ -104,8 +169,9 @@ export class ArcGISComponent implements OnInit {
         stops: new FeatureSet({
           features: view.graphics.toArray()
         }),
-        
-        returnDirections: true
+        startTime: 	1696554486,
+        findBestSequence:true,
+        returnDirections: true,
         
       });
     route.solve(routeUrl, routeParams)

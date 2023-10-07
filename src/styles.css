@@ -2,3 +2,13 @@
 @import 'https://js.arcgis.com/4.27/@arcgis/core/assets/esri/themes/light/main.css';
 html, body { height: 100%; background-color: white;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.page-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(229, 229, 229);
+    margin: 0;
+    padding-bottom: 2rem;
+    width: 100%;
+    height: fit-content;
+    }

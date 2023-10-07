@@ -1,6 +1,9 @@
 .sidenav-container {
   height: 100%;
 }
+.main-content{
+  height: fit-content;
+}
 .mat-sidenav-content::-webkit-scrollbar { /* WebKit */
   display: none;
   overflow: hidden;
@@ -13,14 +16,29 @@
   
   width: 200px;
 }
-h1{
-  font-size: 4rem;
+mat-icon {
+  color: white;
+}
+.SiteName > h1{
+  color: white;
+  background-color: #3a3c3b;;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  z-index: 0;
+  padding-left: 1rem;
+  position: sticky;
+  top: 0;
+  font-size: 3rem;
 }
 
 
 
 
+
 mat-sidenav-content mat-toolbar {
+  background-color: #3a3c3b;
   display: flex;
   z-index: 1;
   padding: 0;
@@ -28,11 +46,11 @@ mat-sidenav-content mat-toolbar {
   top: 0;
   min-height: 4rem;
   max-height: 4rem;
-  
+  width: 100%;
   
 }
 mat-sidenav-content .main-content {
-  background-color: rgb(194, 229, 194);
+  background-color: rgb(103, 103, 103);
   padding: 1rem;
 }
 .cards {
@@ -65,11 +83,12 @@ mat-sidenav-content mat-toolbar .non-active {
 mat-sidenav-content mat-toolbar .active-link {
   background-color: #06b977;
 }
+
 .mat-sidenav-content{
   position: sticky;
   top: 0;
   z-index: 1;
-  background: white;
+  background: rgb(0, 0, 0);
 }
 
 .example-spacer{
