@@ -103,7 +103,7 @@ export class ArcGISComponent implements OnInit {
         view2.graphics.removeAt(1);
         console.log(view2.graphics)
         addGraphic("departure", point,view2)
-        getRoute(view2)
+        getRoute(view2, "DriveTimeResult2", "DriveDistanceResult2");
       }
       
     });
@@ -133,14 +133,15 @@ export class ArcGISComponent implements OnInit {
       console.log(view2.graphics)
       if (view2.graphics.length === 1) {
         addGraphic("destination", point,view2);
-        getRoute(view2);
+        getRoute(view2, "DriveTimeResult2", "DriveDistanceResult2");
         
       } else {
         view2.graphics.removeAt(1);
         view2.graphics.removeAt(1);
         console.log(view2.graphics)
         addGraphic("destination", point,view2)
-        getRoute(view2);
+        getRoute(view2, "DriveTimeResult2", "DriveDistanceResult2");
+        
       }
       
       
@@ -189,7 +190,7 @@ export class ArcGISComponent implements OnInit {
         addGraphic("origin", event.mapPoint,view);
       } else if (view.graphics.length === 1) {
         addGraphic("destination", event.mapPoint,view);
-        getRoute(view);
+        getRoute(view, "DriveTimeResult", "DriveDistanceResult");
         
       } else {
         view.graphics.removeAll();
@@ -216,7 +217,7 @@ export class ArcGISComponent implements OnInit {
       });
       selectedview.graphics.add(graphic);
     }
-    function getRoute(viewoption:any)  {
+    function getRoute(viewoption:any, drivetimeout:string,drivedistout: string)  {
       const routeParams = new RouteParameters({
         stops: new FeatureSet({
           features: viewoption.graphics.toArray()
@@ -257,8 +258,8 @@ export class ArcGISComponent implements OnInit {
           var drivingDist$ = data.routeResults[0].directions.totalLength
           drivingTime$ = (drivingTime$).toFixed(0)
           drivingDist$ = (drivingDist$).toFixed(1)
-          document.getElementById("DriveTimeResult")!.innerHTML = (drivingTime$+' minutes')
-          document.getElementById("DriveDistanceResult")!.innerHTML = (drivingDist$+' miles')
+          document.getElementById(drivetimeout)!.innerHTML = (drivingTime$+' minutes')
+          document.getElementById(drivedistout)!.innerHTML = (drivingDist$+' miles')
           console.log('\nDriving Time: ',drivingTime$,'\nDriving Distantce: ',drivingDist$)
           return drivingTime$;
         }
