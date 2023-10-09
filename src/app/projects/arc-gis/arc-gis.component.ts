@@ -94,7 +94,18 @@ export class ArcGISComponent implements OnInit {
       });
       view2.center = pt;
       view2.zoom= 10;
-      addGraphic("departure", point,view2)
+      if (view2.graphics.length <= 1) {
+        addGraphic("departure", point,view2);
+        
+        
+      } else {
+        view2.graphics.removeAt(0);
+        view2.graphics.removeAt(1);
+        console.log(view2.graphics)
+        addGraphic("departure", point,view2)
+        getRoute(view2)
+      }
+      
     });
     search3.on(("search-complete"),  (event) =>{ 
       console.log(event.results[0].results[0].extent.xmax);
@@ -119,8 +130,20 @@ export class ArcGISComponent implements OnInit {
       });
       view2.center = pt;
       view2.zoom= 10;
-      addGraphic("destination", point,view2)
-      getRoute(view2)
+      console.log(view2.graphics)
+      if (view2.graphics.length === 1) {
+        addGraphic("destination", point,view2);
+        getRoute(view2);
+        
+      } else {
+        view2.graphics.removeAt(1);
+        view2.graphics.removeAt(1);
+        console.log(view2.graphics)
+        addGraphic("destination", point,view2)
+        getRoute(view2);
+      }
+      
+      
     });
 
     const po = new Point()
