@@ -24,6 +24,9 @@ import { PlacefindComponent } from './projects/arc-gis/placefind/placefind.compo
 import { TabGroupsComponent } from './projects/arc-gis/tab-groups/tab-groups.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     TabGroupsComponent
   ],
   imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     MatExpansionModule,
     MatTabsModule,
     MatTableModule,

@@ -86,12 +86,13 @@
     flex-direction: column;
   }
 #mapDiv{
+  margin-top: 0.8rem;
   border: 0.8px rgba(106, 106, 106, 0.4) solid;
     width: 100%;
     height: 500px;
   }
   #mapDivRoute{
-    margin-top: 1%;
+    margin-top: 0.8rem;
     border: 0.8px rgba(106, 106, 106, 0.4) solid;
       width: 100%;
       height: 500px;
@@ -101,7 +102,7 @@
   border: 0.8px rgba(106, 106, 106, 0.4) solid;
     align-self: start;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     background-color: rgba(129, 129, 129, 0.4);
     display: flex;
     flex-direction: column;
@@ -131,6 +132,22 @@
     text-transform: capitalize;
     border: 0.8px rgba(106, 106, 106, 0.4) solid;
 }
+#DriveTimeResult2 {
+  background-color: white;
+    height: 1.2rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    border: 0.8px rgba(106, 106, 106, 0.4) solid;
+}
+#DriveDistanceResult2 {
+  background-color: white;
+    height: 1.2rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    border: 0.8px rgba(106, 106, 106, 0.4) solid;
+}
 .searchField{
   margin-top: 1%;
   text-align: start;
@@ -145,3 +162,65 @@
   .resultsform{
     padding: 1rem;
   }
+.FormFields{
+  display: flex;
+  flex-direction: column;
+}
+.OutputSection{
+  border: 0.8px rgba(106, 106, 106, 0.4) solid;
+    
+    width: 100%;
+    margin-top: 0.8rem;
+    background-color: rgba(129, 129, 129, 0.4);
+
+  }
+.Outputer{
+  
+  background-color: rgba(255, 255, 255, 0.4);
+  
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+ol{
+  text-align: start;
+  background-color: white;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  border: 0.8px rgba(106, 106, 106, 0.4) solid;
+  font-size: 0.8rem;
+}
+li {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+@media (max-width: 600px) {
+  #searchDiv{
+    width: 100%;
+    border: 1.2px rgba(106, 106, 106, 0.4) solid;
+  }
+#searchDiv2{
+    width: 100%;
+    border: 1.2px rgba(106, 106, 106, 0.4) solid;
+  }
+#searchDiv3{
+    width: 100%;
+    border: 1.2px rgba(106, 106, 106, 0.4) solid;
+  }
+  #mapDivRoute{
+    
+    border: 0.8px rgba(106, 106, 106, 0.4) solid;
+    width: 100%;
+    height: 350px;
+    }
+    #mapDiv{
+      border: 0.8px rgba(106, 106, 106, 0.4) solid;
+    width: 100%;
+    height: 350px;
+    }
+  mat-sidenav-content mat-toolbar .mobilehide{
+    display: none;
+  }
+  mat-sidenav-content mat-toolbar .mobilehide mat-button{
+    display: none;
+    width: 0px;
+  }
+}

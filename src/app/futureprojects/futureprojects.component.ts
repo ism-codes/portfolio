@@ -24,7 +24,7 @@ export class FutureprojectsComponent implements OnInit {
 
   }
   FutureData = FUTURE
-  columnsToDisplay = ['ProjectID', 'Name'];
+  columnsToDisplay = ['Name'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedProjects!: FutureFormat | null;
   ngOnInit(): void {

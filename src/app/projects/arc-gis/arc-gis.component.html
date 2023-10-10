@@ -1,6 +1,7 @@
 
 <div class="ArcStyleComponent">
     <h3>ArcGIS Angular Implementation Project</h3>
+    
   <mat-accordion multi class='PanelContainer'>
     <mat-expansion-panel class="Panels" (opened) = true>
       <mat-expansion-panel-header>
@@ -20,6 +21,7 @@
                 <div class="SearchResult">
                     <div>Address Output:</div>
                     <div id="results"></div>
+                    
                 </div>
             </div>
         </div>
@@ -49,7 +51,15 @@
             <div class="DirectionResult">
                 Drive Distance:
                 <div id="DriveDistanceResult"></div>
+
             </div>
+            
+        </div>
+        <div class="OutputSection">
+          <div class="Outputer">
+          Directions:
+          <ol id="instructions"></ol>
+        </div>
         </div>
     </div>
     
@@ -77,19 +87,58 @@
                     End Location:
                     <div id="searchDiv3"></div>
                 </div>
-                <div class="DirectionResult">
-                  <div id="ol"></div>
-                  Drive Time:
-                  <div id="DriveTimeResult2"></div>
-              </div>
-                  
-              <div class="DirectionResult">
-                  Drive Distance:
-                  <div id="DriveDistanceResult2"></div>
-              </div>
+                
                 <div id="mapDivRoute"></div>
+                <div class="DirectionOutput">
+                  <div class="DirectionResult">
+                    
+                    Drive Time:
+                    <div id="DriveTimeResult2"></div>
+                </div>
+                    
+                <div class="DirectionResult">
+                    Drive Distance:
+                    <div id="DriveDistanceResult2"></div>
+                  </div>
+                </div>
+              <div class="OutputSection">
+                <div class="Outputer">
+                Directions:
+                <ol id="instructions2"></ol>
+              </div>
+              </div> 
             </div>
         </div>
     </mat-expansion-panel>
+    <mat-expansion-panel class="Panels" (opened) = true>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <!-- Title for panel -->
+            Entry Forms Demo
+        </mat-panel-title>
+        <mat-panel-description>
+            <!-- Description for panel -->
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Content for panel -->
+      <div class="FormFields">
+      <mat-form-field>
+        <mat-label>Input</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </div>
+    </mat-expansion-panel>
+
   </mat-accordion>
 
