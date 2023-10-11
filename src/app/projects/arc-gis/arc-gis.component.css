@@ -192,7 +192,9 @@ li {
   margin: 0.5rem 0;
   font-size: 1rem;
 }
+
 @media (max-width: 600px) {
+  
   #searchDiv{
     width: 100%;
     border: 1.2px rgba(106, 106, 106, 0.4) solid;

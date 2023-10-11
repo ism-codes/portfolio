@@ -179,8 +179,6 @@ export class ArcGISComponent implements OnInit {
       zoom: 12, // Zoom level
       container: "mapDiv", // Div element
     });
-    view.ui.empty("top-left");
-    view2.ui.empty("top-left");
     const feat = new Feature({
       container: "feature"
 
