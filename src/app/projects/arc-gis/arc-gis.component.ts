@@ -81,10 +81,14 @@ export class ArcGISComponent implements OnInit {
     
     const view2 = new MapView({
       map: map2,
-      center:[ 0,0],
-      zoom: 1, // Zoom level
+      center: [-117.182270,34.055810], // Longitude, latitude
+      zoom: 10,
       container: "mapDivRoute", // Div element
+      navigation:{
+        mouseWheelZoomEnabled: false
+      }
     });
+    view2.on('focus', function() { view.navigation.mouseWheelZoomEnabled = true; });
       search.on(("search-complete"),  (event) =>{ 
       document.getElementById("results")!.innerHTML = "";
       var html = event.searchTerm;
@@ -167,7 +171,7 @@ export class ArcGISComponent implements OnInit {
 
     
 
-
+    // Map One
     esriConfig.apiKey="AAPK5c928794591042709bc8fbfe5277f506L61TaOqI9tSpQ14zCyIoUivahGVw1OMcUR_gRPn38GmmQjsm8FqS9y0ak5mmdNjh";
     const map = new Map({
     basemap: "arcgis-navigation-night"
@@ -176,9 +180,13 @@ export class ArcGISComponent implements OnInit {
     const view = new MapView({
       map: map,
       center: [-117.182270,34.055810], // Longitude, latitude
-      zoom: 12, // Zoom level
+      zoom: 10, // Zoom level
       container: "mapDiv", // Div element
+      navigation:{
+        mouseWheelZoomEnabled: false
+      }
     });
+    view.on('focus', function() { view.navigation.mouseWheelZoomEnabled = true; });
     const feat = new Feature({
       container: "feature"
 

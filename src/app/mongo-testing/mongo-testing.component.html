@@ -1,0 +1,60 @@
+<div class="page-content">
+    <h3>MongoDB Implementation Project</h3>
+    
+  <mat-accordion multi class='PanelContainer'>
+    <mat-expansion-panel class="Panels" expanded = true>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              <!-- Title for panel -->
+              Get Request Demo
+          </mat-panel-title>
+          <mat-panel-description>
+              <!-- Description for panel -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- Content for panel -->
+      <div class="PanelContentContainer">
+          <div class="FormFields">
+            <button mat-raised-button (click)="getPost()">Get Data</button>
+            
+          </div>
+          <div class="FormFields">
+                <p>Project Name: <br>{{this.name}}</p>
+                <p> Description: <br>{{this.description}}</p>
+                <p> Project ID: <br>{{this.projectid}}</p>
+          </div>
+      </div>
+      </mat-expansion-panel>
+    <mat-expansion-panel class="Panels" (opened) = true>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <!-- Title for panel -->
+            Entry Forms Demo
+        </mat-panel-title>
+        <mat-panel-description>
+            <!-- Description for panel -->
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Content for panel -->
+    <div class="PanelContentContainer">
+        <div class="FormFields">
+        <mat-form-field>
+            <mat-label>Input</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Select</mat-label>
+            <mat-select>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Textarea</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field>
+        </div>
+    </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>

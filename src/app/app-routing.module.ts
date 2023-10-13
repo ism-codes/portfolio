@@ -5,6 +5,7 @@ import { PreviousprojectsComponent } from './previousprojects/previousprojects.c
 import { CurrentprojectsComponent } from './currentprojects/currentprojects.component';
 import { FutureprojectsComponent } from './futureprojects/futureprojects.component';
 import { ArcGISComponent } from './projects/arc-gis/arc-gis.component';
+import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
 const routes: Routes = [
   {path: '', component: MainsectionComponent},
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'current-projects', 
   component: CurrentprojectsComponent},
   {path: 'future-projects', component: FutureprojectsComponent},
-  {path: 'current-projects/ArcGIS', component: ArcGISComponent}
+  {path: 'current-projects/ArcGIS', component: ArcGISComponent},
+  {path: 'current-projects/MongoDB', component: MongoTestingComponent},
 
 ];
 

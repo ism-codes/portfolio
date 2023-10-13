@@ -27,6 +27,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PreviousprojectsComponent,
     PlacefindComponent,
     ArcGISComponent,
-    TabGroupsComponent
+    TabGroupsComponent,
+    MongoTestingComponent
   ],
   imports: [
     MatFormFieldModule,

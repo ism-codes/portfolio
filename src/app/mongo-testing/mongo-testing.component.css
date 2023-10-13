@@ -1,0 +1,28 @@
+.PanelContainer{
+    align-self: center;
+    text-align: center;
+    width: 98%;
+    
+  }
+  .Panels{
+    width: 100%;
+    margin: 0.5rem 0 0 0 ;
+    padding: 0;
+  
+  }
+  .PanelContentContainer{
+    border: 0.8px rgba(106, 106, 106, 0.4) solid;
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: rgba(215, 215, 215, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+.FormFields{
+    margin-top:1% ;
+    border: 1px rgb(168, 168, 168) solid;
+    display: flex;
+  flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+}

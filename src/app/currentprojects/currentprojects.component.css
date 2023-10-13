@@ -4,12 +4,22 @@
     max-width: 300px;
     margin: 1rem;
     cursor: pointer;
+    min-height: 300px;
+
   }
   .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+  }
+  img {
+    min-height: 4rem;
+    padding-top: 1rem;
+  }
+  mat-card-content {
+    min-height: 4rem;
+    padding-top: 1rem;
   }
   .example-card:hover {
     box-shadow: 0 4px 4px 4px rgba(0,0,0,.2)
