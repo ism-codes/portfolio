@@ -1,6 +1,8 @@
 <div class="page-content">
     <h3>MongoDB Implementation Project</h3>
     
+      
+    
   <mat-accordion multi class='PanelContainer'>
     <mat-expansion-panel class="Panels" expanded = true>
         <mat-expansion-panel-header>
@@ -36,7 +38,7 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
             <!-- Title for panel -->
-            Entry Forms Demo
+            Get Many Request Demo
         </mat-panel-title>
         <mat-panel-description>
             <!-- Description for panel -->
@@ -49,32 +51,63 @@
             <button mat-raised-button (click)="getMany()">Get All Projects</button>
             
           </div>
-            <table mat-table [dataSource]="this.dataSource">
+              <table mat-table [dataSource]="this.dataSource" >
 
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-              
-                <!-- Position Column -->
-                <ng-container matColumnDef="ProjectID" class="thStyler">
-                  <th  *matHeaderCellDef class="thStyler"> Project ID </th>
+                <ng-container matColumnDef="ProjectID" class="thStyler" >
+                  <th  *matHeaderCellDef class="thStyler" > Project ID </th>
                   <td *matCellDef="let element" class="projectID"> {{element!.ProjectID}} </td>
                 </ng-container>
               
-                <!-- Name Column -->
-                <ng-container matColumnDef="Name" class="thStyler">
-                  <th  *matHeaderCellDef class="thStyler"> Name </th>
-                  <td  *matCellDef="let element" class="projectName"> {{element.Name}} </td>
+                <ng-container matColumnDef="Name" class="thStyler" >
+                  <th  *matHeaderCellDef class="thStyler" > Name </th>
+                  <td  *matCellDef="let element" class="projectName" > {{element.Name}} </td>
                 </ng-container>
               
-                <!-- Weight Column -->
-                <ng-container matColumnDef="Description" class="thStyler">
-                  <th  *matHeaderCellDef class="thStyler"> Description </th>
+                <ng-container matColumnDef="Description" class="thStyler" >
+                  <th  *matHeaderCellDef class="thStyler" > Description </th>
                   <td  *matCellDef="let element" class="projectDescription"> {{element.Description}} </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-        
+              </table>
+    </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="Panels" (opened) = true>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <!-- Title for panel -->
+            Entry Form Demo
+        </mat-panel-title>
+        <mat-panel-description>
+            <!-- Description for panel -->
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Content for panel -->
+    <div class="PanelContentContainer">
+        <div class="FormFields">
+          <mat-form-field class="example-form-field">
+            <mat-label>Enter Project ID</mat-label>
+            <input matInput type="number" [(ngModel)]="projectIDSubmit">
+            <button *ngIf="projectIDSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="projectIDSubmit=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-form-field class="example-form-field">
+            <mat-label>Enter Project Name</mat-label>
+            <input matInput type="text" [(ngModel)]="projectTitleSubmit">
+            <button *ngIf="projectTitleSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="projectTitleSubmit=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-form-field class="example-form-field">
+            <mat-label>Enter Project Description</mat-label>
+            <input matInput type="text" [(ngModel)]="descriptionSubmit">
+            <button *ngIf="descriptionSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="descriptionSubmit=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <button mat-raised-button (click)="insertOne()">Submit Project</button>
+        </div>
     </div>
     </mat-expansion-panel>
 
