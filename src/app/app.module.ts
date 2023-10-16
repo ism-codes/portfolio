@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreNavComponent } from './core-components/core-nav/core-nav.component';
@@ -26,6 +27,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
 @NgModule({
@@ -43,6 +45,7 @@ import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
     MongoTestingComponent
   ],
   imports: [
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,

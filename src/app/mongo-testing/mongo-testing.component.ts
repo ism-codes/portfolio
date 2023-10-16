@@ -1,23 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { response } from 'express';
-import { type } from 'os';
-import { entries } from 'cypress/types/lodash';
-import { any } from 'cypress/types/bluebird';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
 const headerType: Object = {
   "Access-Control-Request-Headers": "*",
   "api-key": "MXuiOZsLA8IVvwQhguF3yS6cZMD9wvSlJzaR1RKMe5wyZhpigJ65TH7lJK0ZbvGd",
   "Accept": "application/json",
   "Content-Type": "application/json"
 };
-const testmong: Object = {}
-export interface typerrs{
+const MongoObject: Object = {}
+export interface ProjectSingleObject{
   document?:{
   Description?:string,
   Name?:string,
   ProjectID?:number}
 }
+export interface ProjectMultiObject{
+  documents?:{
+    [indexValue: number]: {
+      Description?:string,
+    Name?:string,
+    ProjectID?:number
+    },
+    length?: number
+    
+  }
+  
+}
+export interface ProjectMultiObjectTable{
+    
+    Description?:string,
+    Name?:string,
+    ProjectID?:number
+    
+    
+    
+  }
+  
+
 @Component({
   selector: 'app-mongo-testing',
   templateUrl: './mongo-testing.component.html',
@@ -27,70 +52,83 @@ export interface typerrs{
 
 
 export class MongoTestingComponent {
+  value = 1;
   url = "https://us-west-2.aws.data.mongodb-api.com/app/data-byvgz/endpoint/data/v1/action/findOne";
   apiKey = "QdyzEIIL08I8SakMNJ6AD9Hz7enPxf2rjMchc61xVbUGuCM4MkjKyUcn4eKhQVbQ"
   clusterName = "PortfolioDB"
   databaseName = "IsmaelKhan"
   collectionName = "Portfolio"
   bodyType = {
-    "dataSource": "PortfolioDB",
-    "database": "IsmaelKhan",
-    "collection": "Portfolio",
-    "filter": {
-        "ProjectID": 1
-    }
   
-} 
-  testerrr:typerrs[]=[]
+  } 
+  
+  
   name!: string;
   description!: string;
   projectid!: number;
   constructor(private http: HttpClient){}
-  async getPost() {
-     const guy = await this.http.post(this.url,this.bodyType,headerType).subscribe({
-      next: (testmong) => {this.testerrr.push(testmong); this.getMon()},
-    error: (e) => console.error(e),
-    complete: () => console.info('complete')}).unsubscribe;
-    
-    
+//Gets one object from database
+  SingleProjectFormat:ProjectSingleObject[]=[]
+  async getOne(){
+    this.url = "https://us-west-2.aws.data.mongodb-api.com/app/data-byvgz/endpoint/data/v1/action/findOne";
+    this.bodyType= {
+      "dataSource": "PortfolioDB",
+     "database": "IsmaelKhan",
+     "collection": "Portfolio",
+     "filter": { "ProjectID": this.value }
+    };
+     this.SingleProjectFormat=[]
+    const getOneObject = await this.http.post(this.url,this.bodyType,headerType).subscribe({
+      next: (MongoObject) => {console.log(MongoObject);this.SingleProjectFormat.push(MongoObject); this.getOneObjectData()},
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')}).unsubscribe;
+  }
+  async getOneObjectData(){
+    let dataPulled = this.SingleProjectFormat[0].document
+    console.log(dataPulled)
+    this.name = dataPulled!.Name!;
+    this.description = dataPulled!.Description!;
+    this.projectid = dataPulled!.ProjectID!;
     }
-    async getMon(){
+//Gets multiple objects from database
+
+    ManyProjectFormat:ProjectMultiObject[]=[]
+    ManyProjectTableFormat:ProjectMultiObjectTable[]=[{Description: '',
+      Name:'',
+      ProjectID:0}]
+    dataSource = this.ManyProjectTableFormat
+    displayedColumns: string[] = ['ProjectID', 'Name', 'Description'];
+    async getMany(){
+      this.url = "https://us-west-2.aws.data.mongodb-api.com/app/data-byvgz/endpoint/data/v1/action/find";
+      this.bodyType= {
+        "dataSource": "PortfolioDB",
+       "database": "IsmaelKhan",
+       "collection": "Portfolio",
+       "filter": { "ProjectID": { "$gt": 0 } }
+      };
+       this.ManyProjectFormat=[]
+      const getManyObjects = await this.http.post(this.url,this.bodyType,headerType).subscribe({
+        next: (MongoObject) => {console.log(MongoObject);this.ManyProjectFormat.push(MongoObject); this.getManyObjectData()},
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')}).unsubscribe;
+    }
+    async getManyObjectData(){
+      let dataPulled = this.ManyProjectFormat[0].documents!
+      this.ManyProjectTableFormat = []
+      for (let i = 0; i < dataPulled.length!; i++) {
+        const value = dataPulled[i];
+        this.ManyProjectTableFormat.push(value)
+        console.log(value);
+      }
+      console.log(this.ManyProjectTableFormat)
       
-      let dataPulled = this.testerrr[0].document
-      this.name = dataPulled!.Name!;
-      this.description = dataPulled!.Description!;
-      this.projectid = dataPulled!.ProjectID!;
+      this.dataSource = this.ManyProjectTableFormat
       
+      console.log(dataPulled[0])
+      console.log(dataPulled[1])
+      console.log(dataPulled[2])
       
       
       }
-     
      
      }
-  
-  /**client = new MongoClient(this.uri);
-  async getter() {
-    try {
-        
-        const database = this.client.db('IsmaelKhan');
-        const porfoliodb = database.collection('Portfolio');
-    
-        // Query for a movie that has the title 'Back to the Future'
-        const query = { ProjectID: 1 };
-        const project = await porfoliodb.findOne(query);
-        //const doc = { ProjectID: 4, Name: "New Project", Description: "Testing" };
-        //const result = await porfoliodb.insertOne(doc);
-        //console.log(`A document was inserted with the _id: ${result.insertedId}`,);
-        
-        console.log(project);
-        console.log(project!['Name'])
-        
-      } finally {
-        // Ensures that the client will close when you finish/error
-        await this.client.close();
-      }
-}*/
-
-  
-
-
