@@ -1,4 +1,6 @@
 <div class="PanelContentContainer">
+    <h2>New Travel Requests</h2>
+    
     <div class="FormFields">
       <mat-form-field class="example-form-field">
         <mat-label>Enter Employee ID</mat-label>
@@ -7,7 +9,9 @@
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
-      <br>
+
+     
+
       <mat-form-field class="example-form-field">
         <mat-label>Enter First Name</mat-label>
         <input matInput type="text" [(ngModel)]="firstNameSubmit">
@@ -15,38 +19,49 @@
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
-      <br>
+
+      
+
       <mat-form-field class="example-form-field">
         <mat-label>Enter Last Name</mat-label>
-        <input matInput type="text" [(ngModel)]="lastNameSubmit">
+        <input matInput class='entryForm' type="text" [(ngModel)]="lastNameSubmit">
         <button *ngIf="lastNameSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="lastNameSubmit=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
+
       <br>
+
       <mat-form-field class="example-form-field">
         <mat-label>Enter Travel Location</mat-label>
-        <input matInput type="text" [(ngModel)]="travelLocationSubmit">
-        <button *ngIf="travelLocationSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="travelLocationSubmit=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <input matInput type="text" [formControl]="locationControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+        <mat-option *ngFor="let location of filteredOptions | async" [value]="location">
+            {{ location.text }}
+        </mat-option>
+        </mat-autocomplete>
+        
+        
       </mat-form-field>
-      <br>
-      <mat-form-field class="example-form-field">
-        <mat-label>Enter Travel Start Date</mat-label>
-        <input matInput type="text" [(ngModel)]="travelStartSubmit">
-        <button *ngIf="travelStartSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="travelStartSubmit=''">
-          <mat-icon>close</mat-icon>
-        </button>
+
+      
+
+      <mat-form-field>
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      
+       
       </mat-form-field>
-      <br>
-      <mat-form-field class="example-form-field">
-        <mat-label>Enter Travel End Date</mat-label>
-        <input matInput type="text" [(ngModel)]="travelEndSubmit">
-        <button *ngIf="travelEndSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="travelEndSubmit=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <button mat-raised-button (click)="insertOne()">Submit Project</button>
+      
+    </div>
+      
+      <div class="submitButton">
+        <button mat-raised-button (click)="insertOne()" >Submit Travel Request</button>
     </div>
 </div>

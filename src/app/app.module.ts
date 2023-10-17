@@ -33,6 +33,10 @@ import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
 import { TraveldemoComponent } from './projects/traveldemo/traveldemo.component';
 import { MytravelComponent } from './projects/traveldemo/mytravel/mytravel.component';
 import { NewtravelComponent } from './projects/traveldemo/newtravel/newtravel.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +55,10 @@ import { NewtravelComponent } from './projects/traveldemo/newtravel/newtravel.co
     NewtravelComponent
   ],
   imports: [
+    MatAutocompleteModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
     MatSortModule,
     FormsModule,
     MatFormFieldModule,

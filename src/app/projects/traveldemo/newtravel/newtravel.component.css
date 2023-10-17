@@ -1,0 +1,27 @@
+.PanelContentContainer{
+    width: 98%;
+    padding: 1%;
+    display: flex;
+  flex-wrap: wrap;
+  flex-direction: column ;
+  justify-content: center;
+  align-items: center;
+    border: 2px solid rgb(191, 191, 191);
+    background-color: rgb(255, 255, 255);
+    
+}
+.FormFields{
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+}
+mat-form-field{
+    
+    margin: 0.5rem;
+    background-color: white;
+    min-width: 20rem;
+}
+
+.submitButton{
+    padding: 1%;
+    
+}

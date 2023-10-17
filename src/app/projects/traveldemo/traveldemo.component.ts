@@ -14,6 +14,12 @@ import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
+export const BUTTONS: ButtonLayout[] = [
+  {pagename: "", name: 'Main Page'},
+  {pagename: "current-projects/TravelDemo", name: 'My Travel'},
+  {pagename: "current-projects/TravelDemo", name: 'New Travel'},
+  {pagename: "current-projects/TravelDemo", name: 'Search Travel'},
+]
 const headerType: Object = {
   "Access-Control-Request-Headers": "*",
   "api-key": "MXuiOZsLA8IVvwQhguF3yS6cZMD9wvSlJzaR1RKMe5wyZhpigJ65TH7lJK0ZbvGd",
@@ -45,10 +51,11 @@ export interface ProjectMultiObjectTable{
   TravelStartDate?:string,
   TravelEndDate?:string
   }
-const BUTTONS = [
-  {pagename: "/", name: 'Main Page'},
-  
-]
+  export interface ButtonLayout {
+    pagename: string;
+    name: string;
+}
+
 @Component({
   selector: 'app-traveldemo',
   templateUrl: './traveldemo.component.html',
@@ -61,7 +68,7 @@ export class TraveldemoComponent {
       map(result => result.matches),
       shareReplay()
     );
-  buttons = BUTTONS
+  public buttonList = BUTTONS
   constructor(private breakpointObserver: BreakpointObserver, public router: Router,private http: HttpClient) {}
   
   value = 1;

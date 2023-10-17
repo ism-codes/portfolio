@@ -1,3 +1,4 @@
+
 .sidenav-container {
   height: 100vh;
 }
@@ -25,6 +26,7 @@ mat-icon {
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: center;
   width: 100%;
   z-index: 0;
   padding-left: 1rem;
@@ -32,12 +34,24 @@ mat-icon {
   top: 0;
   font-size: 2rem;
 }
+h1 {
+  text-align: center;
+}
 
 .page-content{
     margin-top: 1%;
+    padding: 1%;
+    
 }
 
-
+app-newtravel{
+  padding: 1%;
+  width: 96%;
+}
+app-mytravel{
+  padding: 1%;
+  width: 96%;
+}
 
 mat-sidenav-content mat-toolbar {
   background-color: #e5e5e5;
@@ -54,7 +68,7 @@ mat-sidenav-content mat-toolbar {
 
 mat-sidenav-content .main-content {
   
-  padding: 1rem;
+  padding: 1%;
 }
 .cards {
   display: flex;
@@ -80,18 +94,18 @@ mat-sidenav-content mat-toolbar .non-active {
   align-items: center;
   line-height: 1rem;
   background-color: #1385c2;
-  color: rgb(255, 255, 255);
+  color: white;
   align-self:stretch;
 }
 mat-sidenav-content mat-toolbar .active-link {
-  background-color: #1973a3;
+  background-color: #1385c2;
 }
 
 .mat-sidenav-content{
   position: sticky;
   top: 0;
   z-index: 1;
-  background: rgb(143, 143, 143);
+  background: #1385c2;
 }
 
 .example-spacer{

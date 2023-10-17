@@ -1,14 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+} from '@angular/core';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClient } from '@angular/common/http';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgIf,JsonPipe, formatDate, DatePipe,AsyncPipe } from '@angular/common';
+import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatDateRangePicker } from '@angular/material/datepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import Search from '@arcgis/core/widgets/Search';
+
 const headerType: Object = {
   "Access-Control-Request-Headers": "*",
   "api-key": "MXuiOZsLA8IVvwQhguF3yS6cZMD9wvSlJzaR1RKMe5wyZhpigJ65TH7lJK0ZbvGd",
@@ -16,7 +31,7 @@ const headerType: Object = {
   "Content-Type": "application/json"
 };
 const MongoObject: Object = {}
-
+const LocationObject: Object = {}
 export interface ProjectMultiObject{
   documents?:{
     [indexValue: number]: {
@@ -30,8 +45,10 @@ export interface ProjectMultiObject{
     length?: number
     
   }
+
   
 }
+
 export interface ProjectMultiObjectTable{
   EmployeeID?:number
   FirstName?:string,
@@ -40,15 +57,52 @@ export interface ProjectMultiObjectTable{
   TravelStartDate?:string,
   TravelEndDate?:string
   }
+  interface LocationSuggestions {
+    text: string;
+    magicKey: string;
+  }
+  
+  interface AutoSuggestions {
+    suggestions: LocationSuggestions[];
+  }
 @Component({
   selector: 'app-newtravel',
   templateUrl: './newtravel.component.html',
   styleUrls: ['./newtravel.component.css']
 })
-export class NewtravelComponent {
+export class NewtravelComponent implements OnInit {
+  userInput!: string;
+  locationControl = new FormControl();
+  filteredOptions!: Observable<LocationSuggestions[]>;
+
+  ngOnInit() {
+    this.filteredOptions = this.locationControl.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((inputedLoc: string) => this.getSuggestions(inputedLoc))
+    );
+    const search = new Search({
+      autoSelect: true,
+      
+      container: "searchDiv",
+      locationEnabled:true
+    });
+    
+  }
   
-  constructor(private http: HttpClient) {}
   
+  public range = new FormGroup({
+    'start': new FormControl(''),
+    'end': new FormControl(''),
+  });
+  dateSend(){
+    let formatStartDate  = this.travelStartSubmit = this.range.controls['start'].value
+    let formatEndDate = this.travelEndSubmit = this.range.controls['end'].value
+    let upD = formatDate(this.range.controls['start'].value, 'fullDate','en-US')
+    console.log(formatStartDate)
+    console.log(formatEndDate)
+    console.log(upD)
+  }
   value = 1;
   url = "https://us-west-2.aws.data.mongodb-api.com/app/data-byvgz/endpoint/data/v1/action/findOne";
   apiKey = "QdyzEIIL08I8SakMNJ6AD9Hz7enPxf2rjMchc61xVbUGuCM4MkjKyUcn4eKhQVbQ"
@@ -77,6 +131,7 @@ export class NewtravelComponent {
       TravelStartDate:'',
       TravelEndDate:''
     }]
+    
     dataSource = this.ManyProjectTableFormat
     displayedColumns: string[] = ['EmployeeID', 'FirstName', 'LastName','TravelLocation','TravelStartDate','TravelEndDate'];
     async getMany(){
@@ -113,9 +168,14 @@ export class NewtravelComponent {
     firstNameSubmit = ''
     lastNameSubmit = ''
     travelLocationSubmit = ''
-    travelStartSubmit = ''
-    travelEndSubmit = ''
+    travelStartSubmit = this.range.controls['start'].value
+    travelEndSubmit = this.range.controls['end'].value
+    
      async insertOne(){
+      this.dateSend()
+      this.travelStartSubmit = this.range.controls['start'].value
+      this.travelEndSubmit = this.range.controls['end'].value
+      this.travelLocationSubmit = this.locationControl.value
       this.url = "https://us-west-2.aws.data.mongodb-api.com/app/data-byvgz/endpoint/data/v1/action/insertOne";
       this.bodyType= {
         "dataSource": "PortfolioDB",
@@ -134,5 +194,43 @@ export class NewtravelComponent {
         next: (MongoObject) => {console.log(MongoObject)},
         error: (e) => console.error(e),
         complete: () => console.info('complete')}).unsubscribe;
+        this.employeeIDSubmit = ''
+        this.firstNameSubmit = ''
+        this.lastNameSubmit = ''
+        this.locationControl.setValue('');
+        this.range.controls['start'].setValue('');
+        this.range.controls['end'].setValue('');
     }
-     }
+    constructor(private http: HttpClient) {}
+
+
+
+
+
+
+    
+    
+    getSuggestions(inputedLoc: string): Observable<LocationSuggestions[]> {
+      const apiToken = "AAPK5c928794591042709bc8fbfe5277f506L61TaOqI9tSpQ14zCyIoUivahGVw1OMcUR_gRPn38GmmQjsm8FqS9y0ak5mmdNjh";
+      const EsriUrl = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?text=${inputedLoc}&category=Populated%20Place&f=json&token=${apiToken}`;
+  
+      return this.http.get<AutoSuggestions>(EsriUrl).pipe(
+        map((response: AutoSuggestions) => response.suggestions || [])
+      );
+    }
+  
+    displayFn(location: LocationSuggestions): string {
+      return location && location.text ? location.text : '';
+    }
+  
+    onOptionSelected(event: any) {
+      const selectedLocation: LocationSuggestions = event.option.value;
+      this.locationControl.setValue(selectedLocation.text);
+      // Handle the selected option here
+      console.log(this.locationControl.value)
+    }
+  
+      
+     ngOnDestroy() {
+      console.log('home destroyed')};
+  }

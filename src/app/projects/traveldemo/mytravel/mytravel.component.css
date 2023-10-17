@@ -1,0 +1,32 @@
+.PanelContentContainer{
+    width: 98%;
+    padding: 1%;
+    display: flex;
+  flex-wrap: wrap;
+  flex-direction: column ;
+  justify-content: center;
+  align-items: center;
+    border: 2px solid rgb(191, 191, 191);
+    background-color: rgb(255, 255, 255);
+    
+}
+.FormFields{width: 90%;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+}
+table {
+    border-collapse: collapse;
+    width: 90%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 1rem;
+  }
+  
+  tr:nth-child(even){background-color: #c2eaff}
+  tr:hover {background-color: #e4e4e4;}
+  th {
+    background-color: #1385c2;
+    color: white;
+  }

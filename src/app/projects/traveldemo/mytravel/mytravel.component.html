@@ -1,9 +1,8 @@
 <div class="PanelContentContainer">
+    <h2 (click)="this.getMany()">My Travel Requests</h2>
     <div class="FormFields">
         
-        <button mat-raised-button (click)="getMany()">Get All Trips</button>
-        
-      </div>
+      
           <table mat-table [dataSource]="this.dataSource" *ngIf="this.TableShowing" >
 
             <ng-container matColumnDef="EmployeeID" class="thStyler" >
@@ -35,4 +34,5 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+        </div>
 </div>
