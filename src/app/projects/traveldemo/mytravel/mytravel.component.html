@@ -1,0 +1,38 @@
+<div class="PanelContentContainer">
+    <div class="FormFields">
+        
+        <button mat-raised-button (click)="getMany()">Get All Trips</button>
+        
+      </div>
+          <table mat-table [dataSource]="this.dataSource" *ngIf="this.TableShowing" >
+
+            <ng-container matColumnDef="EmployeeID" class="thStyler" >
+              <th  *matHeaderCellDef class="thStyler" > Employee ID </th>
+              <td *matCellDef="let element" class="projectID"> {{element!.EmployeeID}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="FirstName" class="thStyler" >
+              <th  *matHeaderCellDef class="thStyler" > First Name </th>
+              <td  *matCellDef="let element" class="projectName" > {{element.FirstName}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="LastName" class="thStyler" >
+              <th  *matHeaderCellDef class="thStyler" > Last Name </th>
+              <td  *matCellDef="let element" class="projectDescription"> {{element.LastName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="TravelLocation" class="thStyler" >
+                <th  *matHeaderCellDef class="thStyler" > Travel Location </th>
+                <td  *matCellDef="let element" class="projectDescription"> {{element.TravelLocation}} </td>
+              </ng-container>
+              <ng-container matColumnDef="TravelStartDate" class="thStyler" >
+                <th  *matHeaderCellDef class="thStyler" > Travel Start Date </th>
+                <td  *matCellDef="let element" class="projectDescription"> {{element.TravelStartDate}} </td>
+              </ng-container>
+              <ng-container matColumnDef="TravelEndDate" class="thStyler" >
+                <th  *matHeaderCellDef class="thStyler" > Travel End Date </th>
+                <td  *matCellDef="let element" class="projectDescription"> {{element.TravelEndDate}} </td>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+</div>

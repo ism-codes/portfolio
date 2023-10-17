@@ -17,5 +17,12 @@ export const CARDS: CardLayout[] = [
         image: "assets/MongoDB.png",
         PageLink: 'MongoDB'
     },
+    {CardID: 3, 
+        title: 'Travel Page Demo', 
+        description: 'Single demo page for Travel Page', 
+        content: 'Page for building a demo page for Travel project',
+        image: "assets/travelicon.png",
+        PageLink: 'TravelDemo'
+    },
     
 ]

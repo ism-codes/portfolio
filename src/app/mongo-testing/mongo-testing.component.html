@@ -44,14 +44,14 @@
             <!-- Description for panel -->
           </mat-panel-description>
       </mat-expansion-panel-header>
-      <!-- Content for panel -->
+      <!-- Content for panel --> 
     <div class="PanelContentContainer">
         <div class="FormFields">
             
             <button mat-raised-button (click)="getMany()">Get All Projects</button>
             
           </div>
-              <table mat-table [dataSource]="this.dataSource" >
+              <table mat-table [dataSource]="this.dataSource" *ngIf="this.TableShowing" >
 
                 <ng-container matColumnDef="ProjectID" class="thStyler" >
                   <th  *matHeaderCellDef class="thStyler" > Project ID </th>

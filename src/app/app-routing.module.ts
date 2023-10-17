@@ -6,17 +6,18 @@ import { CurrentprojectsComponent } from './currentprojects/currentprojects.comp
 import { FutureprojectsComponent } from './futureprojects/futureprojects.component';
 import { ArcGISComponent } from './projects/arc-gis/arc-gis.component';
 import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
+import { TraveldemoComponent } from './projects/traveldemo/traveldemo.component';
 const routes: Routes = [
+  
   {path: '', component: MainsectionComponent},
 
   {path: 'previous-projects', component: PreviousprojectsComponent},
 
-  {path: 'current-projects', 
-  component: CurrentprojectsComponent},
+  {path: 'current-projects', component: CurrentprojectsComponent},
   {path: 'future-projects', component: FutureprojectsComponent},
   {path: 'current-projects/ArcGIS', component: ArcGISComponent},
   {path: 'current-projects/MongoDB', component: MongoTestingComponent},
-
+  {path: 'current-projects/TravelDemo', component: TraveldemoComponent},
 ];
 
 @NgModule({

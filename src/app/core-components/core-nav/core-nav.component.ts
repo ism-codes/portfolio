@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { BUTTONS } from './buttons';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-core-nav',
   templateUrl: './core-nav.component.html',
@@ -18,6 +19,6 @@ export class CoreNavComponent {
       shareReplay()
     );
   buttons = BUTTONS
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public router: Router) {}
 
 }

@@ -30,6 +30,9 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
+import { TraveldemoComponent } from './projects/traveldemo/traveldemo.component';
+import { MytravelComponent } from './projects/traveldemo/mytravel/mytravel.component';
+import { NewtravelComponent } from './projects/traveldemo/newtravel/newtravel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,10 @@ import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
     PlacefindComponent,
     ArcGISComponent,
     TabGroupsComponent,
-    MongoTestingComponent
+    MongoTestingComponent,
+    TraveldemoComponent,
+    MytravelComponent,
+    NewtravelComponent
   ],
   imports: [
     MatSortModule,
