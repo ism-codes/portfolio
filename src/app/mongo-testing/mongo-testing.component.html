@@ -4,7 +4,7 @@
       
     
   <mat-accordion multi class='PanelContainer'>
-    <mat-expansion-panel class="Panels" expanded = true>
+    <mat-expansion-panel class="Panels" >
         <mat-expansion-panel-header>
           <mat-panel-title>
               <!-- Title for panel -->
@@ -14,7 +14,7 @@
               <!-- Description for panel -->
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <!-- Content for panel -->
+        <!-- Content for panel --> 
       <div class="PanelContentContainer">
           <div class="FormFields">
             <mat-form-field class="example-form-field">
@@ -48,7 +48,7 @@
     <div class="PanelContentContainer">
         <div class="FormFields">
             
-            <button mat-raised-button (click)="getMany()">Get All Projects</button>
+            <button mat-raised-button (click)="getMany()">Refresh Projects</button>
             
           </div>
               <table mat-table [dataSource]="this.dataSource" *ngIf="this.TableShowing" >
@@ -92,7 +92,7 @@
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
-          <mat-form-field class="example-form-field">
+          <mat-form-field class="example-form-field"> 
             <mat-label>Enter Project Name</mat-label>
             <input matInput type="text" [(ngModel)]="projectTitleSubmit">
             <button *ngIf="projectTitleSubmit" matSuffix mat-icon-button aria-label="Clear" (click)="projectTitleSubmit=''">
@@ -108,6 +108,44 @@
           </mat-form-field>
           <button mat-raised-button (click)="insertOne()">Submit Project</button>
         </div>
+    </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="Panels" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <!-- Title for panel -->
+            Delete Form
+        </mat-panel-title>
+        <mat-panel-description>
+            <!-- Description for panel -->
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Content for panel --> 
+    <div class="PanelContentContainer">
+        <div class="FormFields">
+            
+            <button mat-raised-button (click)="getMany()">Get All Projects</button>
+            
+          </div>
+              <table mat-table [dataSource]="this.dataSource" *ngIf="this.TableShowing" >
+
+                <ng-container matColumnDef="ProjectID" class="thStyler" >
+                  <th  *matHeaderCellDef class="thStyler" > Project ID </th>
+                  <td *matCellDef="let element" class="projectID"> {{element!.ProjectID}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="Name" class="thStyler" >
+                  <th  *matHeaderCellDef class="thStyler" > Name </th>
+                  <td  *matCellDef="let element" class="projectName" > {{element.Name}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="Description" class="thStyler" >
+                  <th  *matHeaderCellDef class="thStyler" > Description </th>
+                  <td  *matCellDef="let element" class="projectDescription"> {{element.Description}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row mat-row (click)="rowClickHandler({ rowData: row})" *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
     </div>
     </mat-expansion-panel>
 

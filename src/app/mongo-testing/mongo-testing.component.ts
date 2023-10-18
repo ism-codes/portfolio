@@ -9,6 +9,7 @@ import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
+import { raceWith } from 'rxjs';
 const headerType: Object = {
   "Access-Control-Request-Headers": "*",
   "api-key": "MXuiOZsLA8IVvwQhguF3yS6cZMD9wvSlJzaR1RKMe5wyZhpigJ65TH7lJK0ZbvGd",
@@ -19,7 +20,7 @@ const MongoObject: Object = {}
 export interface ProjectSingleObject{
   document?:{
   Description?:string,
-  Name?:string,
+  Name?:string, 
   ProjectID?:number}
 }
 export interface ProjectMultiObject{
@@ -34,6 +35,15 @@ export interface ProjectMultiObject{
   }
   
 }
+export interface myObject  {
+  rowData:{
+    _id: string
+    Name?:string,
+  }
+    
+  
+  
+};
 export interface ProjectMultiObjectTable{
     
     Description?:string,
@@ -53,7 +63,7 @@ export interface ProjectMultiObjectTable{
 
 
 
-export class MongoTestingComponent {
+export class MongoTestingComponent implements OnInit{
   
   value = 1;
   url = "https://us-west-2.aws.data.mongodb-api.com/app/data-byvgz/endpoint/data/v1/action/findOne";
@@ -64,6 +74,10 @@ export class MongoTestingComponent {
   bodyType = {
   
   } 
+  ngOnInit() {
+    this.getMany()
+    
+  }
   // /action/insertOne
   // /action/updateOne
   // /action/insertMany
@@ -81,6 +95,7 @@ export class MongoTestingComponent {
      "collection": "Portfolio",
      "filter": { "ProjectID": this.value }
     };
+    console.log(this.bodyType)
      this.SingleProjectFormat=[]
     const getOneObject = await this.http.post(this.url,this.bodyType,headerType).subscribe({
       next: (MongoObject) => {console.log(MongoObject);this.SingleProjectFormat.push(MongoObject); this.getOneObjectData()},
@@ -151,5 +166,46 @@ export class MongoTestingComponent {
         next: (MongoObject) => {console.log(MongoObject)},
         error: (e) => console.error(e),
         complete: () => console.info('complete')}).unsubscribe;
+    }
+    nameObject = ""
+    idObject = ""
+    dataObject:myObject[]=[]
+    public isClicked = false;
+    rowClickHandler(rowdata: any){
+      this.dataObject=[]
+      this.dataObject.push(rowdata)
+
+      const rowObject = this.dataObject[0]
+      this.idObject = rowObject.rowData._id!
+      
+      
+      this.nameObject = rowObject.rowData.Name!
+
+      console.log(rowObject.rowData._id)
+      if(confirm("Are you sure to delete "+this.nameObject)) {
+        this.deleteOne(this.nameObject)
+        console.log("Implement delete functionality here");
+      }
+    }
+
+    async deleteOne(dbName: string){
+      console.log(dbName)
+      this.url = "https://us-west-2.aws.data.mongodb-api.com/app/data-byvgz/endpoint/data/v1/action/deleteOne";
+      this.bodyType= {
+        "dataSource": "PortfolioDB",
+       "database": "IsmaelKhan",
+       "collection": "Portfolio",
+       "filter": { 
+        "Name": dbName
+        }
+        
+      };
+      console.log(this.bodyType)
+      const deleteOneObject = await this.http.post(this.url,this.bodyType,headerType).subscribe({
+        next: (MongoObject) => {console.log(MongoObject)},
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')});
+        confirm(dbName+" has been deleted")
+        this.getMany()
     }
      }

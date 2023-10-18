@@ -1,8 +1,8 @@
 <div class="PanelContentContainer">
     <h2 (click)="this.getMany()">My Travel Requests</h2>
-    <div class="FormFields">
+    <div class="FormFields" *ngIf="this.TableShowing">
         
-      
+       
           <table mat-table [dataSource]="this.dataSource" *ngIf="this.TableShowing" >
 
             <ng-container matColumnDef="EmployeeID" class="thStyler" >

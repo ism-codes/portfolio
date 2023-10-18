@@ -46,7 +46,7 @@ export interface ProjectMultiObjectTable{
   styleUrls: ['./mytravel.component.css']
 })
 export class MytravelComponent implements OnInit{
-
+  
   
   constructor(private http: HttpClient) {}
   ngOnInit() {
