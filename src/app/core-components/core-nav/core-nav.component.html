@@ -1,9 +1,9 @@
 
 <div>
-<div class="SiteName" *ngIf="router.url != '/current-projects/TravelDemo'">
+<div class="SiteName" *ngIf="router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'">
   <h1>Ismael Khan Portfolio</h1>
 </div>
-<mat-sidenav-container [ngClass]="{'sidenav-container': router.url != '/current-projects/TravelDemo'}">
+<mat-sidenav-container [ngClass]="{'sidenav-container': router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'}">
   <mat-sidenav #drawer class="sidenav hide-on-small-screens" 
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'">
@@ -12,8 +12,8 @@
       <a mat-list-item *ngFor="let button of buttons" routerLink={{button.pagename}} (click)="drawer.toggle()">{{button.name}}</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content [ngClass]="{'mat-sidenav-content': router.url != '/current-projects/TravelDemo'}">
-    <mat-toolbar *ngIf="router.url != '/current-projects/TravelDemo'">
+  <mat-sidenav-content [ngClass]="{'mat-sidenav-content': router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'}">
+    <mat-toolbar *ngIf="router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -39,7 +39,7 @@
       <span class="example-spacer"></span>
     </mat-toolbar>
   
-    <div [ngClass]="{'main-content': router.url != '/current-projects/TravelDemo'}">
+    <div [ngClass]="{'main-content': router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'}">
     <router-outlet></router-outlet>
     </div>
     <!-- Add Content Here -->

@@ -7,12 +7,13 @@ import { FutureprojectsComponent } from './futureprojects/futureprojects.compone
 import { ArcGISComponent } from './projects/arc-gis/arc-gis.component';
 import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
 import { TraveldemoComponent } from './projects/traveldemo/traveldemo.component';
+import { NewmainComponent } from './newmain/newmain.component';
 const routes: Routes = [
   
   {path: '', component: MainsectionComponent},
 
   {path: 'previous-projects', component: PreviousprojectsComponent},
-
+  {path: 'PaperDemo', component: NewmainComponent},
   {path: 'current-projects', component: CurrentprojectsComponent},
   {path: 'future-projects', component: FutureprojectsComponent},
   {path: 'current-projects/ArcGIS', component: ArcGISComponent},

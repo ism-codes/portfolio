@@ -37,6 +37,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NewmainComponent } from './newmain/newmain.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MongoTestingComponent,
     TraveldemoComponent,
     MytravelComponent,
-    NewtravelComponent
+    NewtravelComponent,
+    NewmainComponent
   ],
   imports: [
     MatAutocompleteModule,
