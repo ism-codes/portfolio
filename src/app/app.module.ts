@@ -38,6 +38,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NewmainComponent } from './newmain/newmain.component';
+import { PortfolioNavComponent } from './portfolio-nav/portfolio-nav.component';
+import { PortfolioTestpageComponent } from './portfolio-testpage/portfolio-testpage.component';
+import { PortfolioPastComponent } from './portfolio-pages/portfolio-past/portfolio-past.component';
+import { PortfolioCurrentComponent } from './portfolio-pages/portfolio-current/portfolio-current.component';
+import { PortfolioFutureComponent } from './portfolio-pages/portfolio-future/portfolio-future.component';
+import { PortfolioMainComponent } from './portfolio-pages/portfolio-main/portfolio-main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +60,13 @@ import { NewmainComponent } from './newmain/newmain.component';
     TraveldemoComponent,
     MytravelComponent,
     NewtravelComponent,
-    NewmainComponent
+    NewmainComponent,
+    PortfolioNavComponent,
+    PortfolioTestpageComponent,
+    PortfolioPastComponent,
+    PortfolioCurrentComponent,
+    PortfolioFutureComponent,
+    PortfolioMainComponent
   ],
   imports: [
     MatAutocompleteModule,

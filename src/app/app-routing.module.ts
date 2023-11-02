@@ -8,9 +8,10 @@ import { ArcGISComponent } from './projects/arc-gis/arc-gis.component';
 import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
 import { TraveldemoComponent } from './projects/traveldemo/traveldemo.component';
 import { NewmainComponent } from './newmain/newmain.component';
+import { PortfolioMainComponent } from './portfolio-pages/portfolio-main/portfolio-main.component';
 const routes: Routes = [
   
-  {path: '', component: MainsectionComponent},
+  {path: '', component: PortfolioMainComponent},
 
   {path: 'previous-projects', component: PreviousprojectsComponent},
   {path: 'PaperDemo', component: NewmainComponent},

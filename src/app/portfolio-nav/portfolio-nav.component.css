@@ -1,0 +1,112 @@
+/*
+River Bed
+#3F4B54
+
+Mist Gray
+#C3C3B6
+
+Danube
+#5695CB
+
+Morning Glory
+#8FC0DD
+
+Cool Gray
+#606462
+
+White
+#EDF0EE
+
+Forest Green
+#00735C
+
+Forest Green Dark
+#00493A
+
+Sage
+#859579
+
+Ivory
+#EFEEE9
+
+Khaki
+#C1B49F
+
+Menu Gray
+#e5e5e5
+*/
+
+.home-toolbar{
+    color: #EFEEE9;
+    background-color: #00493A;
+    justify-content: space-between;
+    border-bottom: #EFEEE9 solid 1px;
+}
+.equalspace {
+    flex: 1 1 0px;
+}
+.title-center {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+.home-container{
+    height: 100%;
+    width: 100%;
+    
+}
+
+
+.home-frontlist{
+    background-color: #00493A;
+    color: #EFEEE9;
+    display: flex;
+    justify-content: center;
+    padding: 0.1rem;
+}
+.home-frontlist a{
+    background-color: #00493A;
+    color: #EFEEE9;
+    
+    padding: 0.8rem;
+    font-size: 1.1rem;
+}
+.home-frontlist a:hover{
+    background-color: #00735C;
+}
+
+.home-sidedrawer {
+    background-color: #e5e5e5;
+    
+  }
+h4 {
+    color: #00735C;
+    border-bottom: #00735C solid 1px;
+    margin: 0;
+    padding: 1rem 0.8rem;
+}
+.home-sidedrawer a {
+    
+    color: #00735C;
+    padding: 0.8rem;
+    outline:none;
+  }
+  .home-sidedrawer a:hover {
+    background-color: #dddddd;
+  }
+.home-sidedrawer mat-nav-list{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+
+.fullNav{
+  
+  
+  display: flex;
+  flex-direction: column;
+}
