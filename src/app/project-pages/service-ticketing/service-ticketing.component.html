@@ -1,0 +1,56 @@
+<div class="service-demo">
+    <header>
+      <button routerLink="" aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button>
+      <h1>Service Ticketing System</h1>
+    </header>
+
+    <div class="filter">
+        <label for="status">Filter by Status:</label>
+        <select id="status" name="status">
+            <option value="all">All</option>
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+        </select>
+
+        <label for="priority">Filter by Priority:</label>
+        <select id="priority" name="priority">
+            <option value="all">All</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <button onclick="">Apply Filters</button>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Issue</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Contact</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Populate this section with ticket data from the backend -->
+        <tr>
+            <td>1</td>
+            <td>Network Issue</td>
+            <td>Unable to connect to the internet</td>
+            <td>High</td>
+            <td>Open</td>
+            <td>johndoe@example.com</td>
+        </tr>
+        <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+<footer>
+      <p>&copy; 2023 Service Ticketing System. All rights reserved.</p>
+</footer>
+</div>

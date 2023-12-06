@@ -1,0 +1,25 @@
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.button-container a {
+  text-decoration: none;
+  color: #fff; /* Set your desired text color */
+  background-color: #535353; /* Set your desired background color */
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  margin: 1rem;
+  /* Additional styling */
+  /* Add more styles as needed */
+}
+
+.button-container a:hover {
+  color: black;
+  background-color: #ffffff; /* Change background color on hover */
+}
+
+
+

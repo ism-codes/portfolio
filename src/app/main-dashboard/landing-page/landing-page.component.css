@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+.gradientBackdrop {
+  height: 100%;
+  width: 100%;
+  border:1px solid black;
+  font-size:30px;
+  background: linear-gradient(140deg, #000000, #575757, #000000);
+  background-size: 200% 200%;
+
+  -webkit-animation: Animation 10s ease infinite;
+  -moz-animation: Animation 10s ease infinite;
+  animation: Animation 10s ease infinite;
+}
+.title{
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.title h1{
+    text-align: center;
+    width: 100%;
+}
+
+.projects{
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+@-webkit-keyframes Animation {
+  0%{background-position:20% 0%}
+  50%{background-position:91% 100%}
+  100%{background-position:20% 0%}
+}
+@-moz-keyframes Animation {
+  0%{background-position:20% 0%}
+  50%{background-position:91% 100%}
+  100%{background-position:10% 0%}
+}
+@keyframes Animation { 
+  0%{background-position:20% 0%}
+  50%{background-position:91% 100%}
+  100%{background-position:20% 0%}
+} 
+
+
+

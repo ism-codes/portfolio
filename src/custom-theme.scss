@@ -1,0 +1,15 @@
+// styles.scss
+
+@import '~@angular/material/theming';
+
+// Define your custom palette with black as the primary color
+$custom-primary: mat-palette($mat-grey, 900); // Use any shade of black or customize as needed
+
+// Define your custom accent palette with white as the accent color
+$custom-accent: mat-palette($mat-grey, A100, A200, A400); // Use any shade of white or customize as needed
+
+// Create a custom theme using the defined palette
+$custom-theme: mat-dark-theme($custom-primary, $custom-accent);
+
+// Apply the custom theme
+@include angular-material-theme($custom-theme);
