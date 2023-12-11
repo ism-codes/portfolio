@@ -1,0 +1,101 @@
+.main-content{
+    color: white;
+}
+h3{
+    text-align: center;
+}
+.aboutsection{
+    display: flex;
+    align-items: center;
+    line-height: 2rem;
+    flex-direction: column;
+    max-width: 98%;
+    padding: 1%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(112, 108, 108);
+    
+}
+.inputsection{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 98%;
+    max-width: 98%;
+    padding: 1%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(112, 108, 108);
+}
+.inputsection-field{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    min-width: 90%;
+    max-width: 98%;
+    
+}
+.inputsection-field form{
+    align-self: center;
+    width: 98%;
+    background-color: white;
+    
+}
+.inputsection-field mat-form-field{
+    align-self: center;
+    width: 98%;
+    
+}
+.inputsection-field button{
+    color: white;
+    background-color: rgb(107, 107, 107);
+}
+.main-page-content{
+    display: flex;
+    align-items: center;
+    line-height: 2rem;
+    flex-direction: column;
+    min-width: 98%;
+    max-width: 98%;
+    padding: 1%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(112, 108, 108);
+}
+
+
+.example-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 26%;
+    max-width: 26%;
+    align-items: center;
+    align-content: center;
+    justify-content: stretch;
+    cursor: pointer;
+    background-color: rgb(248, 248, 248);
+
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: space-between;
+    padding: 2%;
+  }
+  img {
+    
+    margin: auto;
+    min-height: 25%;
+    width: 50%;
+    padding: 1rem;
+    margin: 0;
+  }
+  mat-card-header{
+    margin: auto;
+  }
+  
+  .example-card:hover {
+    box-shadow: 0 4px 4px 4px rgba(0,0,0,.2)
+  }
+  .example-header-image {
+    background-size: cover;
+  }

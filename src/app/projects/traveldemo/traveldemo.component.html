@@ -1,0 +1,60 @@
+
+<div class="TravelPageContainer">
+
+  <div class="SiteName">
+    <h1 >Travel Demo Page</h1>
+  </div>
+
+  <mat-sidenav-container class='sidenav-container'>
+
+    <mat-sidenav 
+        #drawer class="sidenav hide-on-small-screens" 
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'">
+
+        <mat-toolbar>Menu</mat-toolbar>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let button of buttonList" routerLink={{button.pagename}} (click)="drawer.toggle()">{{button.name}}</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class='mat-sidenav-content' >
+        <mat-toolbar >
+          <button
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+            >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div class="mobilehide">
+          <button
+            type="button"
+            aria-label="Home Page"
+            mat-icon-button
+            routerLink=""
+            class="hidden-size"
+            >
+            <mat-icon >home</mat-icon>
+          </button>
+        </div>
+          
+          <a mat-button *ngFor="let button of buttonList | slice:1" routerLink={{button.pagename}} routerLinkActive="active-link" class="non-active">{{button.name}}</a>
+          
+          <span class="example-spacer"></span>
+        </mat-toolbar>
+      
+        <div class='main-content'>
+                
+                <div class="page-content">
+                    <app-mytravel></app-mytravel>
+                </div>
+                <div class="page-content">
+                    <app-newtravel></app-newtravel>
+                </div>
+                
+        </div>
+        <!-- Add Content Here -->
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    </div>

@@ -1,0 +1,72 @@
+.PanelContentContainer{
+    width: 98%;
+    padding: 1%;
+    display: flex;
+    flex-wrap: wrap;
+  flex-direction: column ;
+  justify-content: center;
+  align-items: center;
+    border: 2px solid rgb(191, 191, 191);
+    background-color: rgb(255, 255, 255);
+    
+}
+h2 {
+  text-align: center;
+}
+.FormFields{
+  margin-top:1% ;
+    border: 1px rgb(168, 168, 168) solid;
+    display: flex;
+  flex-direction: column;
+    background-color: white;
+    padding: 1%;
+    width: 98%;
+    overflow: scroll;
+}
+table {
+  overflow: scroll;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0;
+  }
+   
+  th, td {
+    
+    text-align: left;
+    
+    
+  }
+  td {
+    
+    text-align: left;
+    
+    
+  }
+  
+  
+  tr:nth-child(even){background-color: #c2eaff}
+  tr:hover {background-color: #e4e4e4;}
+  th {
+    background-color: #1385c2;
+    color: white;
+  }
+  @media (max-width: 600px) {
+    table {
+      overflow: scroll;
+      width: 50rem;
+      font-size: 1rem;
+      padding: 0; 
+      }
+      th, td {
+    
+        text-align: center;
+        
+        width: 100rem;
+      }
+      td {
+        
+        text-align: center;
+        
+        width: 100rem;
+      }
+  }

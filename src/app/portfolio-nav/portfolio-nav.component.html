@@ -1,0 +1,36 @@
+<div class="fullNav">
+<mat-toolbar class="home-toolbar">
+    <div class="equalspace" >
+        <button *ngIf="this.currentWindowWidth <= 700" mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    
+    <span class="title-center">Ismael Khan Portfolio</span>
+    <div class="equalspace"></div>
+    
+</mat-toolbar>
+
+<mat-drawer-container class="home-container" hasBackdrop="">
+
+    <mat-drawer #drawer mode="over" class="home-sidedrawer">
+        <mat-nav-list>
+            <h4>Menu</h4>
+            <a *ngIf="router.url != '/'" routerLink='/' (click)="drawer.toggle()">Home Page</a>
+            <a *ngFor="let page of subpageList" routerLink={{page.pagename}} (click)="drawer.toggle()">{{page.name}}</a>
+        </mat-nav-list>
+    </mat-drawer> 
+
+    <mat-nav-list class="home-frontlist" *ngIf="this.currentWindowWidth >= 700">
+        <a *ngIf="router.url != '/'" routerLink='/'>Home Page</a>
+        <a *ngFor="let page of subpageList" routerLink={{page.pagename}}>{{page.name}}</a>
+    </mat-nav-list>
+    <!--Router Outlet-->
+    <div class="porfolio-page-base">
+        <router-outlet></router-outlet>
+    </div>
+    <footer>Please let me know if you find any errors!</footer>
+</mat-drawer-container> 
+
+</div>

@@ -1,0 +1,48 @@
+
+<div>
+<div class="SiteName" *ngIf="router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'">
+  <h1>Ismael Khan Portfolio</h1>
+</div>
+<mat-sidenav-container [ngClass]="{'sidenav-container': router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'}">
+  <mat-sidenav #drawer class="sidenav hide-on-small-screens" 
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let button of buttons" routerLink={{button.pagename}} (click)="drawer.toggle()">{{button.name}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content [ngClass]="{'mat-sidenav-content': router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'}">
+    <mat-toolbar *ngIf="router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="mobilehide">
+      <button
+        type="button"
+        aria-label="Home Page"
+        mat-icon-button
+        routerLink=""
+        class="hidden-size"
+        >
+        <mat-icon >home</mat-icon>
+      </button>
+    </div>
+      
+      <a mat-button *ngFor="let button of buttons | slice:1" routerLink={{button.pagename}} class = "non-active hidden-xs"routerLinkActive="active-link" >{{button.name}}</a>
+    
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+  
+    <div [ngClass]="{'main-content': router.url != '/current-projects/TravelDemo' && router.url != '/PaperDemo'}">
+    <router-outlet></router-outlet>
+    </div>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+</div>
