@@ -3,36 +3,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SpotifyService {
-  private apiUrl = 'https://api.spotify.com/v1';
 
-  constructor(private http: HttpClient) {}
+  private apiBaseUrl = 'https://api.spotify.com/v1';
 
-  private getHeaders(): HttpHeaders {
-    // Add your Spotify API token logic here
-    const token = 'BQDsiAKLRNe6xRTEjKM7M3c58zjfgQqgTwBva9hQ0TN5jwve8AMDLNw5j-v4bxvN-T451bpYJN9LPUHHLdIlS7HNrKwDJf9pk1Z9ftXJYtsDZdZ5gwY';
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
+  constructor(private http: HttpClient) { }
+
+  getProfile(accessToken: string): Observable<any> {
+    const url = `${this.apiBaseUrl}/me`;
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + accessToken
     });
-  }
 
-  getUserProfile(): Observable<any> {
-    const url = `${this.apiUrl}/me`;
-    const headers = this.getHeaders();
-    return this.http.get(url, { headers });
-  }
+    const options = { headers: headers };
 
-  getUserPlaylists(): Observable<any> {
-    const url = `${this.apiUrl}/me/playlists`;
-    const headers = this.getHeaders();
-    return this.http.get(url, { headers });
-  }
-
-  getPlaylistTracks(playlistId: string): Observable<any> {
-    const url = `${this.apiUrl}/playlists/${playlistId}/tracks`;
-    const headers = this.getHeaders();
-    return this.http.get(url, { headers });
+    return this.http.get(url, options);
   }
 }

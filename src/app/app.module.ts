@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { LandingPageComponent } from './main-dashboard/landing-page/landing-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,9 +15,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { EmployeeManagementComponent } from './project-pages/employee-management/employee-management.component';
 import { ServiceTicketingComponent } from './project-pages/service-ticketing/service-ticketing.component';
+
+import { SpotifyDashboardComponent } from './project-pages/spotify-dashboard/spotify-dashboard.component';
 import { TrackComponent } from './project-pages/spotify-dashboard/track/track.component';
 import { UserProfileComponent } from './project-pages/spotify-dashboard/user-profile/user-profile.component';
 import { PlaylistComponent } from './project-pages/spotify-dashboard/playlist/playlist.component';
+
 @NgModule({
   declarations: [	
     AppComponent,
@@ -27,9 +31,11 @@ import { PlaylistComponent } from './project-pages/spotify-dashboard/playlist/pl
       ServiceTicketingComponent,
       TrackComponent,
       UserProfileComponent,
-      PlaylistComponent
+      PlaylistComponent,
+      SpotifyDashboardComponent
    ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

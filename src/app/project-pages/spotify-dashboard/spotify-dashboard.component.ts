@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifyAuthCoordinatorService } from './spotify-utilities/SpotifyAuthCoordinator.service';
 
 @Component({
   selector: 'app-spotify-dashboard',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpotifyDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private spotifyAuthCoordinator: SpotifyAuthCoordinatorService) { }
+
+  login() {
+    this.spotifyAuthCoordinator.loginAndFetchProfile();
+  }
 
   ngOnInit() {
   }

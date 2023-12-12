@@ -1,5 +1,5 @@
-<div *ngIf="userProfile">
-  <h2>{{ userProfile.display_name }}</h2>
-  <p>Email: {{ userProfile.email }}</p>
-  <img [src]="userProfile.images[0]?.url" alt="{{ userProfile.display_name }}" />
+<div *ngIf="profile">
+  <h2>{{ profile!.display_name }}</h2>
+  <p>Email: {{ profile!.email }}</p>
+  <!-- Display other profile information as needed -->
 </div>
