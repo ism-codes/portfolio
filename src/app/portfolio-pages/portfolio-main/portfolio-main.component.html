@@ -1,0 +1,48 @@
+
+<h3>Home Page</h3>
+    <div class="main-page-content">
+        <h4>
+            About Me
+        </h4>
+        <p>
+            I am currently a Application Developer Student Technician at Esri working on various projects for interal company applications.<br> 
+            One of my main projects is the reworking of our company's interal travel page which is responsible for the process of getting employees travel accomodations approved and scheduled.
+        </p>
+    </div>
+    <div class="main-page-content">
+        <h4> 
+            Featured Projects
+        </h4>
+        <div class = "cards">
+            <mat-card class="example-card" *ngFor="let card of featuredcards" routerLink="help">
+                <mat-card-header>
+                  
+                  <mat-card-title>{{card.title}}</mat-card-title>
+                  
+                </mat-card-header>
+                <img mat-card-image src={{card.image}} alt="">
+                
+              </mat-card>
+            </div> 
+    </div>
+    <div class="main-page-content">
+        <h4>
+            Submit Future Project Ideas
+            
+        </h4>
+        <div class="inputsection">
+            <p>Feel free to suggest any projects you can think of for me to try out!</p>
+            <form  class="inputsection-field">
+                <mat-form-field appearance="outline">
+                  <mat-label>Project Name</mat-label>
+                  <input matInput placeholder="Ex. Gas Calcuator App" value="">
+                </mat-form-field>
+              
+                <mat-form-field appearance="outline">
+                  <mat-label>Project Description</mat-label>
+                  <textarea matInput placeholder="Ex. This project will do..."></textarea>
+                </mat-form-field>
+                <button mat-raised-button>Submit Suggestion</button>
+              </form>
+        </div>
+    </div>

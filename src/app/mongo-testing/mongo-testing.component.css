@@ -1,0 +1,67 @@
+.PanelContainer{
+    align-self: center;
+    text-align: center;
+    width: 98%;
+    
+  }
+  .Panels{
+    width: 100%;
+    margin: 0.5rem 0 0 0 ;
+    padding: 0;
+  
+  }
+  .PanelContentContainer{
+    border: 0.8px rgba(106, 106, 106, 0.4) solid;
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: rgba(215, 215, 215, 0.4);
+      display: flex;
+      flex-direction: column; 
+    }
+.FormFields{
+    margin-top:1% ;
+    border: 1px rgb(168, 168, 168) solid;
+    display: flex;
+  flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+}
+table {
+    width: 100%;
+    padding: 0;
+  }
+td{
+    border: 0.3px black solid;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+tr:nth-child(even){background-color: #c2eaff}
+  tr:hover {background-color: #e4e4e4;}
+.projectID{
+    width: 15%;
+    border: 0.3px black solid;
+    padding: 0 0.1rem;
+    margin: 0;
+}
+.projectName{
+    width: 30%;
+    border: 0.3px black solid;
+    padding: 0 0.1rem;
+    margin: 0;
+}
+.projectDescription{
+    width: 55%;
+    border: 0.3px black solid;
+    padding: 0 0.1rem;
+    margin: 0;
+}
+mat-header-cell{
+    text-align: center;
+}
+.thStyler{
+    padding: 0.2rem;
+    border: 0.3px black solid;
+    margin: 0;
+    text-align: center;
+}

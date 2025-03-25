@@ -1,16 +1,97 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreNavComponent } from './core-components/core-nav/core-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { CardsComponent } from './cards/cards.component';
+import {MatCardModule} from '@angular/material/card';
+import { CurrentprojectsComponent } from './currentprojects/currentprojects.component';
+import { FutureprojectsComponent } from './futureprojects/futureprojects.component';
+import { MainsectionComponent } from './mainsection/mainsection.component';
+import { PreviousprojectsComponent } from './previousprojects/previousprojects.component';
+import { ArcGISComponent } from './projects/arc-gis/arc-gis.component';
+import { PlaceFind } from './projects/arc-gis/placefind/placefind.service';
+import { PlacefindComponent } from './projects/arc-gis/placefind/placefind.component';
+import { TabGroupsComponent } from './projects/arc-gis/tab-groups/tab-groups.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MongoTestingComponent } from './mongo-testing/mongo-testing.component';
+import { TraveldemoComponent } from './projects/traveldemo/traveldemo.component';
+import { MytravelComponent } from './projects/traveldemo/mytravel/mytravel.component';
+import { NewtravelComponent } from './projects/traveldemo/newtravel/newtravel.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NewmainComponent } from './newmain/newmain.component';
+import { PortfolioNavComponent } from './portfolio-nav/portfolio-nav.component';
+import { PortfolioTestpageComponent } from './portfolio-testpage/portfolio-testpage.component';
+import { PortfolioPastComponent } from './portfolio-pages/portfolio-past/portfolio-past.component';
+import { PortfolioCurrentComponent } from './portfolio-pages/portfolio-current/portfolio-current.component';
+import { PortfolioFutureComponent } from './portfolio-pages/portfolio-future/portfolio-future.component';
+import { PortfolioMainComponent } from './portfolio-pages/portfolio-main/portfolio-main.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CoreNavComponent,
+    CardsComponent,
+    CurrentprojectsComponent,
+    FutureprojectsComponent,
+    MainsectionComponent,
+    PreviousprojectsComponent,
+    PlacefindComponent,
+    ArcGISComponent,
+    TabGroupsComponent,
+    MongoTestingComponent,
+    TraveldemoComponent,
+    MytravelComponent,
+    NewtravelComponent,
+    NewmainComponent,
+    PortfolioNavComponent,
+    PortfolioTestpageComponent,
+    PortfolioPastComponent,
+    PortfolioCurrentComponent,
+    PortfolioFutureComponent,
+    PortfolioMainComponent
   ],
   imports: [
+    MatAutocompleteModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatSortModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatTabsModule,
+    MatTableModule,
+    MatCardModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

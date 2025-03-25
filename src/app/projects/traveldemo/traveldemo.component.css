@@ -1,0 +1,125 @@
+
+.sidenav-container {
+  height: 100vh;
+}
+.main-content{
+  height: fit-content;
+}
+.mat-sidenav-content::-webkit-scrollbar { /* WebKit */
+  display: none;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; }
+.sidenav {
+  
+  width: 200px;
+}
+mat-icon {
+  color: #1385c2;
+}
+.SiteName > h1{
+  color: #1385c2;
+  background-color: #e5e5e5;;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 0;
+  padding-left: 1rem;
+  position: sticky;
+  top: 0;
+  font-size: 2rem;
+}
+h1 {
+  text-align: center;
+}
+
+.page-content{
+    margin-top: 1%;
+    padding: 1%;
+    
+}
+
+app-newtravel{
+  padding: 1%;
+  width: 96%;
+}
+app-mytravel{
+  padding: 1%;
+  width: 96%;
+}
+
+mat-sidenav-content mat-toolbar {
+  background-color: #e5e5e5;
+  display: flex;
+  z-index: 1;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  min-height: 4rem;
+  max-height: 4rem;
+  width: 100%;
+  
+}
+
+mat-sidenav-content .main-content {
+  
+  padding: 1%;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+mat-sidenav-content mat-toolbar button{
+  display: flex;
+  float: right;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 0;
+  margin: 0;
+}
+
+mat-sidenav-content mat-toolbar .non-active {
+  min-width: 100px;
+  display: flex;
+  white-space:normal;
+  border-radius: 0;
+  align-items: center;
+  line-height: 1rem;
+  background-color: #1385c2;
+  color: white;
+  align-self:stretch;
+}
+mat-sidenav-content mat-toolbar .active-link {
+  background-color: #1385c2;
+}
+
+.mat-sidenav-content{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #1385c2;
+}
+
+.example-spacer{
+  flex: 1 1 auto;
+}
+@media (max-width: 600px) {
+  h1{
+    font-size: 2rem;
+  }
+  mat-sidenav-content mat-toolbar .mobilehide{
+    display: none;
+  }
+  mat-sidenav-content mat-toolbar .mobilehide mat-button{
+    display: none;
+    width: 0px;
+  }
+}
